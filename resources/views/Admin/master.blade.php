@@ -26,8 +26,6 @@
             {{-- content --}}
             @yield('content')
             
-            {{-- footer --}}
-            @include('admin.layout.footer')
         </div>
     </div>
     <script src="{{asset('assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
