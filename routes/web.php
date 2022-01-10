@@ -35,6 +35,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/', [AdminKategoriController::class, 'index'])->name('index');
         Route::get('/create', [AdminKategoriController::class, 'create_view'])->name('create');
         Route::post('/create', [AdminKategoriController::class, 'create_process'])->name('create.process');
+        Route::get('/update/{id}', [AdminKategoriController::class, 'update_view'])->name('update');
+        Route::post('/update/{id}', [AdminKategoriController::class, 'update_process'])->name('update.process');
         Route::get('/delete/{id}', [AdminKategoriController::class, 'delete'])->name('delete');
     });
 
@@ -58,4 +60,4 @@ Route::prefix('admin')->group(function () {
         Route::post('/create', [AdminOmzetController::class, 'create_process'])->name('create.process');
         Route::get('/delete/{id}', [AdminOmzetController::class, 'delete'])->name('delete');
     });
-});
+}); 

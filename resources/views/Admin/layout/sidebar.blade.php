@@ -28,28 +28,28 @@
                         </li>
 
                         <li class="sidebar-item  ">
-                            <a href="{{ route('pelanggan.index') }}" class='sidebar-link'>
+                            <a href="{{ route('kategori.index') }}" class='sidebar-link'>
                                 <i class="bi bi-stack"></i>
                                 <span>Data Katogori Produk</span>
                             </a>
                         </li>
 
                         <li class="sidebar-item  ">
-                            <a href="{{ route('pelanggan.index') }}" class='sidebar-link'>
+                            <a href="{{ route('produk.index') }}" class='sidebar-link'>
                                 <i class="bi bi-archive-fill"></i>
                                 <span>Data Produk</span>
                             </a>
                         </li>
 
                         <li class="sidebar-item  ">
-                            <a href="{{ route('pelanggan.index') }}" class='sidebar-link'>
+                            <a href="{{ route('transaksi.index') }}" class='sidebar-link'>
                                 <i class="bi bi-cash-stack"></i>
                                 <span>Transaksi Pelanggan</span>
                             </a>
                         </li>
 
                         <li class="sidebar-item  ">
-                            <a href="{{ route('pelanggan.index') }}" class='sidebar-link'>
+                            <a href="{{ route('omzet.index') }}" class='sidebar-link'>
                                 <i class="bi bi-bar-chart-fill"></i>
                                 <span>Omzet Penjualan</span>
                             </a>
