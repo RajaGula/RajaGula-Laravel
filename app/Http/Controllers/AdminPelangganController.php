@@ -66,6 +66,7 @@ class AdminPelangganController extends Controller
 
         return redirect(route('pelanggan.index'))->with(['success' => 'Tambah Pelanggan Berhasil']);
     }
+    
     public function delete($id)
     {
         $pelanggan = pelanggan::find($id);

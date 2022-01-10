@@ -6,6 +6,10 @@ use App\Http\Controllers\AdminKategoriController;
 use App\Http\Controllers\AdminProdukController;
 use App\Http\Controllers\AdminTransaksiController;
 use App\Http\Controllers\AdminOmzetController;
+
+use App\Http\Controllers\PelangganActivityController;
+use App\Http\Controllers\PelangganCartController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +39,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/', [AdminKategoriController::class, 'index'])->name('index');
         Route::get('/create', [AdminKategoriController::class, 'create_view'])->name('create');
         Route::post('/create', [AdminKategoriController::class, 'create_process'])->name('create.process');
+        Route::get('/update/{id}', [AdminKategoriController::class, 'update_view'])->name('update');
+        Route::post('/update/{id}', [AdminKategoriController::class, 'update_process'])->name('update.process');
         Route::get('/delete/{id}', [AdminKategoriController::class, 'delete'])->name('delete');
     });
 
@@ -58,4 +64,14 @@ Route::prefix('admin')->group(function () {
         Route::post('/create', [AdminOmzetController::class, 'create_process'])->name('create.process');
         Route::get('/delete/{id}', [AdminOmzetController::class, 'delete'])->name('delete');
     });
-});
+}); 
+
+Route::prefix('/')->group(function () {
+    Route::prefix('/activity')->name('activity.')->group(function () {
+        Route::get('/', [PelangganActivityController::class, 'index'])->name('index');
+    });
+
+    Route::prefix('/cart')->name('cart.')->group(function () {
+        Route::get('/', [PelangganCartController::class, 'index'])->name('index');
+    });
+}); 
