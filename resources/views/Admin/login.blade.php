@@ -83,11 +83,7 @@
                                             
                                         </form>
                                     </div>
-                                    <div class="card-footer text-center" >
-                                        <div >
-                                            <p style="margin-top: 10px">Belum Punya Akun? <a href="{{url('register')}}">Daftar!</a></p>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
