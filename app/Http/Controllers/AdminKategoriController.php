@@ -27,7 +27,7 @@ class AdminKategoriController extends Controller
 
         $kategori = new kategori;
 
-        $kategori->nama_kategori                = $request->kategori_nama;
+        $kategori->kategori                = $request->kategori_nama;
         $kategori->save();
 
         return redirect(route('kategori.index'))->with(['success' => 'Tambah Kategori Berhasil']);
