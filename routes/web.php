@@ -9,6 +9,8 @@ use App\Http\Controllers\AdminProdukController;
 use App\Http\Controllers\AdminTransaksiController;
 use App\Http\Controllers\AdminOmzetController;
 
+use App\Http\Controllers\PelangganAccountController;
+use App\Http\Controllers\PelangganHomeController;
 use App\Http\Controllers\PelangganActivityController;
 use App\Http\Controllers\PelangganCartController;
 
@@ -79,6 +81,14 @@ Route::prefix('admin')->group(function () {
 }); 
 
 Route::prefix('/')->group(function () {
+    Route::prefix('/')->name('home.')->group(function () {
+        Route::get('/', [PelangganHomeController::class, 'index'])->name('index');
+    });
+
+    Route::prefix('/account')->name('account.')->group(function () {
+        Route::get('/', [PelangganAccountController::class, 'index'])->name('index');
+    });
+
     Route::prefix('/activity')->name('activity.')->group(function () {
         Route::get('/', [PelangganActivityController::class, 'index'])->name('index');
     });
