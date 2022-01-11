@@ -26,7 +26,8 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><center><a class="btn btn-info" name="hapus" href="#">Statusnya apa</a></center></td>
+                <td><center><a class="btn btn-outline-light" name="hapus" href="#" style="background-color:#7F9B6E;font-color:white;width:50%;border-radius:25px 25px 25px 25px" >Status</a></center></td>
+
             </tr>
             
         </tbody>

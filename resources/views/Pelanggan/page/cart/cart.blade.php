@@ -27,13 +27,13 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><center><a class="btn btn-danger" name="hapus" href="#">Hapus</a></center></td>
+                <td><center><a class="btn btn-danger" name="hapus" href="#" style="font-color:white;width:50%;border-radius:25px 25px 25px 25px">Hapus</a></center></td>
             </tr>
             
             <tr>
                 <th colspan="4">Total</th>
                 <th>Rp </th>
-                <th><center><a class="btn btn-success" name="hapus" href="#">Checkout</a></center></th>
+                <th><center><a class="btn btn-outline-light" name="hapus" href="#" style="background-color:#7F9B6E;font-color:white;width:50%;border-radius:25px 25px 25px 25px">Checkout</a></center></th>
             </tr>
         </tbody>
     </table>
