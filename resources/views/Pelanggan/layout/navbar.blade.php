@@ -1,3 +1,4 @@
+
 <nav class="navbar center navbar-expand-sm navbar-light bg-light navbar-fixed" >
     <div class="container">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,20 +17,26 @@
                 <a class="nav-link" href="/" >HOME</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link"href="{{ route('activity.index') }}">ACTIVITY</a>
+                <a class="nav-link" href="{{ route('activity.index') }}">ACTIVITY</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link"href="{{ route('cart.index') }}" >CART</a>
+                <a class="nav-link" href="{{ route('cart.index') }}" >CART</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link"href="" >FAVORITE</a>
+                <a class="nav-link" href="" >FAVORITE</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link"href="{{ route('account.index') }}">ACCOUNT</a>
+                <a class="nav-link" href="{{ route('account.index') }}">ACCOUNT</a>
             </li>
+            @if(session()->has('user'))
             <li class="nav-item">
-                <a class="nav-link"href=""><i class="fa fa-user" aria-hidden="true" style="margin-right: 20px"></i></a>
+                <a class="nav-link" href="{{url('logoutpelanggan')}}"><i class="fa fa-user" aria-hidden="true" style="margin-right: 10px"></i>{{session()->get('user')->name}}</a>
             </li>
+            @else
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('loginpelanggan') }}"><i class="fa fa-user" aria-hidden="true" style="margin-right: 10px"></i>Login</a>
+            </li>
+            @endif
         </ul>
         </div>
     </div>

@@ -21,8 +21,8 @@ class Kategori extends Model
     	'updated_at'
     ];
 
-    public function Produk()
+    public function produk()
     {
-        return $this->hasMany(Produk::class);
+        return $this->hasMany('App\Models\Produk', 'id');
     }
 }

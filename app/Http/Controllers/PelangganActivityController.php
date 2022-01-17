@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session;
 
 class PelangganActivityController extends Controller
 {
     public function index()
     {
-        return view('Pelanggan.page.activity.activity');
+        if(Session::has('user')){
+            return view('Pelanggan.page.activity.activity');
+        }
+        else{
+            return redirect()->route('home.index');
+        }
     }
 }

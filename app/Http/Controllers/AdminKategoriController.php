@@ -47,7 +47,7 @@ class AdminKategoriController extends Controller
         
         $kategori = kategori::find($id);
 
-        $kategori->nama_kategori                = $request->kategori_nama;
+        $kategori->kategori                = $request->kategori_nama;
         $kategori->save();
 
         return redirect(route('kategori.index'))->with(['success' => 'Ubah Kategori Berhasil']);

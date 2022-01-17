@@ -29,7 +29,7 @@
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Data Pelanggan</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Data Create Produk</li>
                                 </ol>
                             </nav>
                         </div>
@@ -80,16 +80,34 @@
                                                     </div>
 
                                                     <div class="col-md-3">
+                                                        <label>Harga</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <div class="form-group has-icon-left">
+                                                            <div class="position-relative">
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Harga" id="first-name-icon" value="{{old('produk_harga')}}" name="produk_harga" id="produk_harga" >
+                                                                <div class="form-control-icon">
+                                                                    <i class="bi bi-cart-plus"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3">
                                                         <label>Nama Kategori</label>
                                                     </div>
                                                     <div class="col-md-9">
                                                         <div class="form-group has-icon-left">
                                                             <div class="position-relative">
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Nama Kategori" id="first-name-icon" value="{{old('produk_kategori')}}" name="produk_kategori" id="produk_kategori" >
                                                                 <div class="form-control-icon">
                                                                     <i class="bi bi-tags"></i>
                                                                 </div>
+                                                                <select class="form-control" name="produk_kategori" id="produk_kategori" >
+                                                                    @foreach($kategori as $kt)
+                                                                        <option value="{{$kt->id}}">{{$kt->kategori}}</option>
+                                                                    @endforeach
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>

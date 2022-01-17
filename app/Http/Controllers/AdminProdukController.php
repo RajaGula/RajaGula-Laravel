@@ -10,14 +10,16 @@ class AdminProdukController extends Controller
 {
     public function index()
     {
-        $produk = Produk::with('Kategori.Kategori')->paginate(5);
+        $produk = Produk::with(['kategori'])->paginate(5);
 
         return view('Admin.Page.dataProduk.produk', compact('produk'));
     }
 
     public function create_view()
     {
-        return view('Admin.Page.dataProduk.create');
+        $kategori = kategori::all();
+
+        return view('Admin.Page.dataProduk.create', compact('kategori'));
     }
 
     public function create_process(Request $request)
@@ -26,6 +28,7 @@ class AdminProdukController extends Controller
             'produk_nama'               => 'required',
             'produk_stok'               => 'required',
             'produk_kategori'           => 'required',
+            'produk_harga'              => 'required',
             'produk_detail'             => 'required',
         ]);
 
@@ -49,17 +52,28 @@ class AdminProdukController extends Controller
             }
             $produk->nama_produk         = $request->produk_nama;
             $produk->stok_produk         = $request->produk_stok;
-            // $produk->id_kategori      = $request->produk_kategori;
+            $produk->harga         = $request->produk_harga;
+            $produk->id_kategori      = $request->produk_kategori;
             $produk->detail_produk       = $request->produk_detail;
             $produk->save();
 
         return redirect(route('produk.index'))->with(['success' => 'Tambah Produk Berhasil']);
     }
 
+    public function view($id)
+    {
+        $kategori = kategori::all();
+
+        $produk = produk::find($id);
+        return view('Admin.Page.dataProduk.show', compact('produk', 'kategori'));
+    }
+
     public function update_view($id)
     {
+        $kategori = kategori::all();
+
         $produk = produk::find($id);
-        return view('Admin.Page.dataProduk.update', compact('produk'));
+        return view('Admin.Page.dataProduk.update', compact('produk', 'kategori'));
     }
 
     public function update_process($id, Request $request)
@@ -75,7 +89,7 @@ class AdminProdukController extends Controller
 
         $produk->nama_produk         = $request->produk_nama;
         $produk->stok_produk         = $request->produk_stok;
-        // $produk->id_kategori      = $request->produk_kategori;
+        $produk->id_kategori      = $request->produk_kategori;
         $produk->detail_produk       = $request->produk_detail;
         $produk->save();
 

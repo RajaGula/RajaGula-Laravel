@@ -5,20 +5,56 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\AdminLoginVerifyRequest;
 use App\Models\User;
+use App\Models\Admin;
 use Session;
 
 class AuthController extends Controller
 {
-    public function index()
+    public function login()
     {
-        if ($user = Auth::user()) {
-            return redirect('Admin.Page.dashboard.dashboard');
-        }
-        return view('Admin.login');
+            return view('Admin.login');
     }
 
-    public function proses_login(Request $request)
+    public function loginpelanggan()
+    {
+            return view('pelanggan.login');
+    }
+
+    public function proses_login(request $request)
+    {
+        $username = request('username');
+        $password = request('password');
+
+        $admin = Admin::where('username', $username)->first();
+        
+        if($admin==null)
+        {
+            
+            $request->session()->flash('error', 'Invalid Username');
+            
+            return redirect(route('login'));
+        }
+        
+        else
+        {
+            if($password == $admin -> password)
+            {
+                session()->put('admin',$admin);
+                //$request->session()->put('username', $request->Username);
+                return redirect(route('dashboard.index'));
+            }
+            else if($request->Password!=$admin->password)
+            {
+                $request->session()->flash('error', 'Invalid Password');
+                return view('Admin.login');
+            }
+        }
+    }
+
+    public function proses_loginpelanggan(Request $request)
     {
         request()->validate(
             [
@@ -28,19 +64,48 @@ class AuthController extends Controller
 
         $kredensil = $request->only('name','password');
 
-            if (Auth::attempt($kredensil)) {
-                    return redirect('/admin/dashboard');
-            }else{
-                Session::flash('error', 'Email atau Password Salah');
-                return redirect('/login');
-            }
+        if (Auth::attempt($kredensil)) {
+            $user = Auth::user();
+            $request->session()->put('user', $user);
+            return redirect(route('home.index'));
+        } 
+        else{
+            return redirect(route('loginpelanggan'))->with('error', 'gagal login say');
+        }
     }
-
-    public function logout(Request $request)
+    
+    public function logout()
     {
-       $request->session()->flush();
-       Auth::logout();
-       return Redirect('login');
+        $user = Auth::user();
+        Auth::logout();
+        return Redirect('login');
     }
 
+    public function logoutpelanggan(Request $request)
+    {
+        $user = Auth::user();
+        $request->session()->forget('user', $user);
+        return Redirect(route('home.index'));
+    }
+
+    public function register(Request $request)
+    {
+        return view('Pelanggan.register');
+    }
+
+    public function proses_registerpelanggan(Request $request)
+    {
+        
+        User::create([
+            'name'          => $request -> name,
+            'password'      => Hash::make($request -> password),
+            'email'         => $request -> email,
+            'alamat'        => $request -> alamat,
+            'telepon'       => $request -> telepon,
+        ]);
+        
+        $user = Auth::user();
+        $request->session()->put('user', $user);
+        return redirect('/loginpelanggan')->with('success', 'Registrasi Berhasil');
+    }
 }

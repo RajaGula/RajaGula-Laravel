@@ -10,7 +10,7 @@
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 
-                                <span><b>Login sebagai : </b>{{ Auth::user()->role }}</span>
+                                <span><b>Login sebagai : </b>{{session()->get('admin')->username}}</span>
                             </nav>
                         </div>
                     </div>

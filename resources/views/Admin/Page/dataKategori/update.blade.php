@@ -56,7 +56,7 @@
                                                         <div class="form-group has-icon-left">
                                                             <div class="position-relative">
                                                                 <input type="text" class="form-control"
-                                                                    placeholder="Nama Kategori" id="first-name-icon" value="{{$kategori->nama_kategori}}" name="kategori_nama" id="kategori_nama" >
+                                                                    placeholder="Nama Kategori" id="first-name-icon" value="{{$kategori->kategori}}" name="kategori_nama" id="kategori_nama" >
                                                                 <div class="form-control-icon">
                                                                     <i class="bi bi-person"></i>
                                                                 </div>

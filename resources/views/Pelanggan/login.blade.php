@@ -8,7 +8,7 @@
             content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <meta name="description" content=""/>
         <meta name="author" content=""/>
-        <title>Login Admin RajaGula</title>
+        <title>Login Pelanggan RajaGula</title>
         <link
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -37,7 +37,7 @@
                                         <h3 class="text-center font-weight-light my-4">Login</h3>
                                     </div>
                                     <div class="card-body">
-                                        <form action="{{route('proses_login')}}" method="POST" id="logForm">
+                                        <form action="{{url('proses_loginpelanggan')}}" method="POST" id="logForm">
                                             {{ csrf_field() }}
                                             <div class="form-group">
                                                 @error('login_gagal')
@@ -56,7 +56,7 @@
                                                 <input
                                                     class="form-control py-4"
                                                     id="inputEmailAddress"
-                                                    name="username"
+                                                    name="name"
                                                     type="text"
                                                     placeholder="Masukkan Username"/>
                                                 @if($errors->has('username'))
