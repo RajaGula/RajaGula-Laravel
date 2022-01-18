@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produk;
+use App\Models\Kategori;
 
 class PelangganHomeController extends Controller
 {
@@ -19,6 +20,6 @@ class PelangganHomeController extends Controller
         $kategori = kategori::all();
 
         $produk = produk::find($id);
-        return view('Pelanggan.Page.detail.detail', compact('produk', 'kategori'));
+        return view('Pelanggan.Page.home.detail', compact('produk', 'kategori'));
     }
 }

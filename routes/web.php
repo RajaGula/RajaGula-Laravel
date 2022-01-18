@@ -92,7 +92,7 @@ Route::group(['middleware' => 'admin'], function () {
 Route::prefix('/')->group(function () {
     Route::prefix('/')->name('home.')->group(function () {
         Route::get('/', [PelangganHomeController::class, 'index'])->name('index');
-        Route::get('/detail', [PelangganHomeController::class, 'view'])->name('view');
+        Route::get('/detail/{id}', [PelangganHomeController::class, 'view'])->name('view');
     });
 
     Route::prefix('/account')->name('account.')->group(function () {
