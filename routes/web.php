@@ -97,6 +97,8 @@ Route::prefix('/')->group(function () {
 
     Route::prefix('/account')->name('account.')->group(function () {
         Route::get('/', [PelangganAccountController::class, 'index'])->name('index');
+        Route::post('/updateimg', [PelangganAccountController::class, 'updateimg'])->name('updateimg');
+        Route::post('/update', [PelangganAccountController::class, 'update'])->name('update');
     });
 
     Route::prefix('/activity')->name('activity.')->group(function () {

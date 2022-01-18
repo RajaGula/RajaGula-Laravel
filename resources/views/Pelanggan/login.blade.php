@@ -1,103 +1,140 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-        <meta name="description" content=""/>
-        <meta name="author" content=""/>
-        <title>Login Pelanggan RajaGula</title>
-        <link
-            rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
-            crossorigin="anonymous"></script>
-    </head>
-    <body style="background-color: #7F9B6E;">
-        <div id="layoutAuthentication">
-            <div id="layoutAuthentication_content">
-                <main>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-10">
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    {{-- Error Alert --}}
-                                    @if(session('error'))
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        {{session('error')}}
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    @endif
-                                    <div class="card-header">
-                                        <h3 class="text-center font-weight-light my-4">Login</h3>
-                                    </div>
-                                    <div class="card-body">
-                                        <form action="{{url('proses_loginpelanggan')}}" method="POST" id="logForm">
-                                            {{ csrf_field() }}
-                                            <div class="form-group">
-                                                @error('login_gagal')
-                                                    {{-- <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span> --}}
-                                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                                        {{-- <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span> --}}
-                                                        <span class="alert-inner--text"><strong>Warning!</strong> {{ $message }}</span>
-                                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    @enderror
-                                                <label class="small mb-1" for="inputEmailAddress">Username</label>
-                                                <input
-                                                    class="form-control py-4"
-                                                    id="inputEmailAddress"
-                                                    name="name"
-                                                    type="text"
-                                                    placeholder="Masukkan Username"/>
-                                                @if($errors->has('username'))
-                                                <span class="error">{{ $errors->first('username') }}</span>
-                                                @endif
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="small mb-1" for="inputPassword">Password</label>
-                                                <input
-                                                    class="form-control py-4"
-                                                    id="inputPassword"
-                                                    type="password"
-                                                    name="password"
-                                                    placeholder="Masukkan Password"/>
-                                                @if($errors->has('password'))
-                                                <span class="error">{{ $errors->first('password') }}</span>
-                                                @endif
-                                            </div>
-                                            <div
-                                                class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                {{-- <a class="small" href="#">Forgot Password?</a> --}}
-                                                <button class="btn btn-primary btn-block" type="submit">Login</button>
-                                            </div>
-                                            
-                                        </form>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </main>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Masuk - RajaGula</title>
+
+    <style>
+        
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar center navbar-expand-sm navbar-light bg-light navbar-fixed" >
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item" >
+                        <a class="navbar-brand mx-100" href="#">
+                            <img src="{{asset('logo.png')}}" width="200" height="60" alt="">
+                        </a>
+                    </li>
+                </ul>
             </div>
- 
         </div>
-        <script
-            src="https://code.jquery.com/jquery-3.4.1.min.js"
-            crossorigin="anonymous"></script>
-        <script
-            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
-            crossorigin="anonymous"></script>
-        <script src="{{url('assets/js/scripts.js')}}"></script>
-    </body>
+    </nav>
+
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100 mt-5">
+          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card" style="border-radius: 15px;">
+              <div class="card-body p-5">
+                <h2 class="text-uppercase text-center mb-5" style="font-family: 'Montserrat'; color: #5e8148; "><b>Masuk</b></h2>
+  
+                <form action="{{url('proses_loginpelanggan')}}" method="POST" id="logForm">
+                    {{ csrf_field() }}
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example3cg">Email</label>
+                    <input class="form-control py-3" id="inputEmailAddress" name="email" type="email" placeholder="Masukkan Email"/>
+                  </div>
+  
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example4cg">Password</label>
+                    <input class="form-control py-3" id="inputEmailAddress" name="password" type="password" placeholder="Masukkan password"/>
+                  </div>
+  
+                  <div class="form-check d-flex mb-5">
+                    <input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      value=""
+                      id="form2Example3cg"
+                    />
+                    <label class="form-check-label" for="form2Example3g">
+                      Remember me?
+                    </label>
+                  </div>
+  
+                  <div class="d-flex justify-content-center">
+                    <button class="btn btn-outline-light" name="checkout" type="submit" style="background-color:#7F9B6E;font-color:white;width:100%;border-radius:25px 25px 25px 25px; font-size:18px"><b>Masuk</b></button>
+                  </div>
+  
+                  <p class="text-center text-muted mt-5 mb-0">Don't have an account? <a href="{{route('registerpelanggan')}}" class="fw-bold text-body"><u>Register here</u></a></p>
+  
+                </form>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <br>
+
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-light text-muted" style="margin-top: 120px; font-family: 'Montserrat';">
+    <!-- Section: Social media -->
+    <!-- Section: Links  -->
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom" style="background-color: #C7E7B4;">
+        <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-4 ">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold mb-4">
+                <a class="navbar-brand mx-100" href="#">
+                    <img src="{{asset('logo.png')}}" width="200" height="60" alt="">
+                </a>
+            </h6>
+            <p>
+                Jl. Telekomunikasi Jl. Terusan Buah Batu, Sukapura, Kec. Dayeuhkolot, Kota Bandung, Jawa Barat 40257
+            </p>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-4 ">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+                Ikuti Kami
+            </h6>
+            <p>
+                <i class="fa fa-instagram" aria-hidden="true" style="margin-right: 20px"></i><a href="#!" class="text-reset" style="text-decoration:none;">Instagram</a>
+            </p>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-4 ">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+                Hubungi Kami
+            </h6>
+            <p>
+            <i class="fa fa-whatsapp" aria-hidden="true" style="margin-right: 20px"></i><a href="#!" class="text-reset" style="text-decoration:none;">Whatsapp</a>
+            </p>
+            </div>
+            <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+        </div>
+    </section>
+    <!-- Section: Links  -->
+
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: #C7E7B4;">
+        © 2022 Copyright: <b>Kelompok 4</b>
+    </div>
+    <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
 </html>

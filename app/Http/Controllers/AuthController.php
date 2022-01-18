@@ -58,11 +58,11 @@ class AuthController extends Controller
     {
         request()->validate(
             [
-                'name'      => 'required',
+                'email'     => 'required',
                 'password'  => 'required',
             ]);
 
-        $kredensil = $request->only('name','password');
+        $kredensil = $request->only('email','password');
 
         if (Auth::attempt($kredensil)) {
             $user = Auth::user();
