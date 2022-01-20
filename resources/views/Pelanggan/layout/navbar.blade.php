@@ -23,7 +23,7 @@
                 <a class="nav-link" href="{{ route('cart.index') }}" >CART</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="" >FAVORITE</a>
+                <a class="nav-link" href="{{ route('favorit.index') }}" >FAVORITE</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('account.index') }}">ACCOUNT</a>

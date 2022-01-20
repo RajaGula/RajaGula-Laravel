@@ -13,6 +13,8 @@ use App\Http\Controllers\PelangganAccountController;
 use App\Http\Controllers\PelangganHomeController;
 use App\Http\Controllers\PelangganActivityController;
 use App\Http\Controllers\PelangganCartController;
+use App\Http\Controllers\PelangganFavoritController;
+
 use App\Http\Controllers\AuthPelangganController;
 
 use Illuminate\Support\Facades\Route;
@@ -105,8 +107,16 @@ Route::prefix('/')->group(function () {
         Route::get('/', [PelangganActivityController::class, 'index'])->name('index');
     });
 
+    Route::prefix('/favorit')->name('favorit.')->group(function () {
+        Route::get('/', [PelangganFavoritController::class, 'index'])->name('index');
+        Route::get('/create/{id}', [PelangganFavoritController::class, 'create'])->name('create');
+        Route::get('/delete/{id}', [PelangganFavoritController::class, 'delete'])->name('delete');
+    });
+
     Route::prefix('/cart')->name('cart.')->group(function () {
         Route::get('/', [PelangganCartController::class, 'index'])->name('index');
+        Route::post('/create/{id}', [PelangganCartController::class, 'create'])->name('create');
+        Route::get('/delete/{id}', [PelangganCartController::class, 'delete'])->name('delete');
     });
 }); 
         

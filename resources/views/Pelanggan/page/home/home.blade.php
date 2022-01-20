@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row pt-3">
                 @foreach($produk as $pr)
-                <div class="col-md d-flex justify-content-center pt-5">
+                <div class="col-lg-3 justify-content-center pt-5">
                     <form>
                             <div class="card" style="width: 15rem;">
                                 <img src="{{ asset('fotoproduk/' . $pr->foto_produk) }}" class="card-img-top" height="150px">

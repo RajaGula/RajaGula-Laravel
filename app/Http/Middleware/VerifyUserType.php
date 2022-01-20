@@ -21,6 +21,6 @@ class VerifyUserType
            // dd(1);
            return $next($request);
         }
-        return redirect()->route('admin.login');
+        return redirect()->route('login');
     }
 }
