@@ -42,7 +42,7 @@
                         </li>
 
                         <li class="sidebar-item  ">
-                            <a href="{{ route('transaksi.index') }}" class='sidebar-link'>
+                            <a href="{{ route('admintransaksi.index') }}" class='sidebar-link'>
                                 <i class="bi bi-cash-stack"></i>
                                 <span>Transaksi Pelanggan</span>
                             </a>

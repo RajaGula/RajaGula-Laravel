@@ -9,7 +9,7 @@ class AdminPelangganController extends Controller
 {
     public function index()
     {
-        $pelanggan = User::all();
+        $pelanggan = User::paginate(5);
 
         return view('Admin.Page.dataPelanggan.pelanggan', compact('pelanggan'));
     }

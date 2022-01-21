@@ -57,6 +57,10 @@
                                 @endforeach
                                 </tbody>
                             </table>
+
+                            <div class="d-flex justify-content-center">
+                                {!! $kategori->links() !!}
+                            </div>
                         </div>
                     </div>
 

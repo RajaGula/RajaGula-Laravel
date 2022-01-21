@@ -76,10 +76,13 @@ Route::group(['middleware' => 'admin'], function () {
                 Route::get('/delete/{id}', [AdminProdukController::class, 'delete'])->name('delete');
             });
 
-            Route::prefix('adminTransaksi')->name('transaksi.')->group(function () {
+            Route::prefix('adminTransaksi')->name('admintransaksi.')->group(function () {
                 Route::get('/', [AdminTransaksiController::class, 'index'])->name('index');
+                Route::get('/view/{no_order}', [AdminTransaksiController::class, 'view'])->name('view');
                 Route::get('/create', [AdminTransaksiController::class, 'create_view'])->name('create');
                 Route::post('/create', [AdminTransaksiController::class, 'create_process'])->name('create.process');
+                Route::get('/update/{id}', [AdminTransaksiController::class, 'update_view'])->name('update');
+                Route::post('/update/{id}', [AdminTransaksiController::class, 'update_process'])->name('update.process');
                 Route::get('/delete/{id}', [AdminTransaksiController::class, 'delete'])->name('delete');
             });
 

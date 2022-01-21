@@ -9,7 +9,7 @@ class AdminKategoriController extends Controller
 {
     public function index()
     {
-        $kategori = kategori::all();
+        $kategori = kategori::paginate(5);
 
         return view('Admin.Page.dataKategori.kategori', compact('kategori'));
     }

@@ -6,14 +6,14 @@
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Data Produk</h3>
+                            <h3>Data Transaksi</h3>
                             <p class="text-subtitle text-muted">For user to check they list</p>
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Data Produk</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Data Transaksi</li>
                                 </ol>
                             </nav>
                         </div>
@@ -27,16 +27,17 @@
                 <section class="section">
                     <div class="card">
                         <div class="card-header">
-                        <a href="{{ route('produk.create') }}" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true" style="margin-right: 10px;"></i>Add Produk</a>
+                        
                         </div>
                         <div class="card-body">
                             <table class="table table-striped" id="table1">
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama Produk</th>
-                                        <th>Stok</th>
-                                        <th>Harga Produk</th>
+                                        <th>Nama Pelanggan</th>
+                                        <th>Nomer Orderan</th>
+                                        <th>Total Transaksi</th>
+                                        <th>Bukti Pembayaran</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -44,36 +45,38 @@
                                     <?php
                                         $no = 0;
                                     ?>
-                                    @foreach($produk as $pr)
+                                    @foreach($trans as $ts)
                                     <?php
                                         $no += 1;
                                     ?>
                                     <tr>
                                     <td>{{$no}}</td>
-                                    <td>{{$pr->nama_produk}}</td>
-                                    <td>{{$pr->stok_produk}}</td>
-                                    <td>{{$pr->harga}}</td>
+                                    <td>{{$ts->user->name}}</td>
+                                    <td>{{$ts->no_order}}</td>
+                                    <td>{{$ts->total}}</td>
+                                    <td><img src="{{ asset('buktipembayaran/' . $ts->buktibayar) }}" alt="foto" class="img-fluid" style="height: 100px;"></td>
                                     
                                     <td>
-                                        <a href="{{route('produk.view', $pr->id)}}" class="btn btn-info" ><i class="fa fa-info" aria-hidden="true" style="margin-right: 10px;"></i>Detail</a>
-                                        <a href="{{route('produk.update', $pr->id)}}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true" style="margin-right: 10px;"></i>Ubah</a>
-                                        <a href="{{route('produk.delete', $pr->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa fa-trash-o" aria-hidden="true" style="margin-right: 10px;"></i>Hapus</a>
+                                        <a href="{{route('admintransaksi.view', $ts->no_order)}}" class="btn btn-info" ><i class="fa fa-info" aria-hidden="true" style="margin-right: 10px;"></i>Detail</a>
+                                        <a href="{{route('admintransaksi.update', $ts->id)}}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true" style="margin-right: 10px;"></i>Ubah</a>
+                                        <a href="{{route('admintransaksi.delete', $ts->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa fa-trash-o" aria-hidden="true" style="margin-right: 10px;"></i>Hapus</a>
                                     </td>
                                 </tr>
+                                
                                 @endforeach
+
                                 </tbody>
                             </table>
-
-                            <div class="d-flex justify-content-center">
-                                {!! $produk->links() !!}
-                            </div>
                             
+                            <div class="d-flex justify-content-center">
+                                {!! $trans->links() !!}
+                            </div>
                         </div>
 
                     </div>
 
                 </section>
             </div>
+            
 
-    
 @endsection
