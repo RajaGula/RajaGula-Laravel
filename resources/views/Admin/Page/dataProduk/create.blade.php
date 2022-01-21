@@ -88,7 +88,7 @@
                                                                 <input type="number" class="form-control"
                                                                     placeholder="Harga" id="first-name-icon" value="{{old('produk_harga')}}" name="produk_harga" id="produk_harga" >
                                                                 <div class="form-control-icon">
-                                                                    <i class="bi bi-cart-plus"></i>
+                                                                    <i class="bi bi-cash"></i>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -118,13 +118,13 @@
                                                     <div class="col-md-9">
                                                         <div class="form-group">
                                                             <div class="position-relative">
-                                                                <input type="file" class="form-control"  value="{{old('foto')}}" name="foto" onchange="loadFile(event)" >  
+                                                                <input type="file" class="form-control" value="{{old('foto')}}" name="foto" onchange="loadFile(event)" >  
                                                             </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-3">
-                                                        <label>Detail Jus</label>
+                                                        <label>Deskripsi Produk</label>
                                                     </div>
                                                     <div class="col-md-9">
                                                         <div class="form-group">

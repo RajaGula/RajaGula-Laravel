@@ -39,10 +39,31 @@ class PelangganCartController extends Controller
         $produk = Produk::find($id)->id;
         $user_id = Auth::user()->id;
 
+        $pro =Produk::find($id);
+
         $cart = new cart;
 
         $cart->id_produk = $produk;
         $cart->id_user = $user_id;
+        $cart->jumlah = $request->jumlah;
+        
+        $cart->save();
+        Session::put('cart', $cart);
+
+        $pro->stok_produk = $pro->stok_produk-$request->jumlah;
+        $pro->save();
+
+        return redirect(route('cart.index'));
+    }
+
+    public function update($id, Request $request)
+    {
+        $request->validate([
+            'jumlah'        => 'required',
+        ]);
+
+        $cart = cart::find($id);
+
         $cart->jumlah = $request->jumlah;
         $cart->save();
 

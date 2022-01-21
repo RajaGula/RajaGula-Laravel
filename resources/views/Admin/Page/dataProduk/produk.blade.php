@@ -36,6 +36,7 @@
                                         <th>No</th>
                                         <th>Nama Produk</th>
                                         <th>Stok</th>
+                                        <th>Harga Produk</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -51,6 +52,7 @@
                                     <td>{{$no}}</td>
                                     <td>{{$pr->nama_produk}}</td>
                                     <td>{{$pr->stok_produk}}</td>
+                                    <td>{{$pr->harga}}</td>
                                     
                                     <td>
                                         <a href="{{route('produk.view', $pr->id)}}" class="btn btn-info" ><i class="fa fa-info" aria-hidden="true" style="margin-right: 10px;"></i>Detail</a>

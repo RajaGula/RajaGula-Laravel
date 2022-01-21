@@ -14,6 +14,7 @@ use App\Http\Controllers\PelangganHomeController;
 use App\Http\Controllers\PelangganActivityController;
 use App\Http\Controllers\PelangganCartController;
 use App\Http\Controllers\PelangganFavoritController;
+use App\Http\Controllers\PelangganTransaksiController;
 
 use App\Http\Controllers\AuthPelangganController;
 
@@ -116,7 +117,17 @@ Route::prefix('/')->group(function () {
     Route::prefix('/cart')->name('cart.')->group(function () {
         Route::get('/', [PelangganCartController::class, 'index'])->name('index');
         Route::post('/create/{id}', [PelangganCartController::class, 'create'])->name('create');
+        Route::post('/update/{id}', [PelangganCartController::class, 'update'])->name('update');
         Route::get('/delete/{id}', [PelangganCartController::class, 'delete'])->name('delete');
+    });
+
+    Route::prefix('/transaksi')->name('transaksi.')->group(function () {
+        Route::get('/', [PelangganTransaksiController::class, 'index'])->name('index');
+        Route::get('/checkout', [PelangganTransaksiController::class, 'get_checkout'])->name('checkout');
+        Route::post('/bayar/{no_order}', [PelangganTransaksiController::class, 'bayar'])->name('bayar');
+        Route::get('/uploadview/{no_order}', [PelangganTransaksiController::class, 'uploadview'])->name('uploadview');
+        Route::post('/updateimg/{id}', [PelangganTransaksiController::class, 'updateimg'])->name('updateimg');
+        Route::post('/create', [PelangganTransaksiController::class, 'create'])->name('create');
     });
 }); 
         

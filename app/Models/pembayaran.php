@@ -1,23 +1,18 @@
 <?php
 
 namespace App\Models;
-use App\Models\Produk; 
 use App\Models\User; 
 use App\Models\order; 
+use App\Models\transaksi; 
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class transaksi extends Model
+class pembayaran extends Model
 {
     use HasFactory;
-    protected $table = 'transaksis';
+    protected $table = 'pembayarans';
     protected $primaryKey = "id";
-
-    public function produk()
-    {
-        return $this->belongsTo('App\Models\Produk', 'id_produk');
-    }
 
     public function user()
     {
@@ -28,4 +23,5 @@ class transaksi extends Model
     {
         return $this->belongsTo('App\Models\order', 'no_order');
     }
+
 }

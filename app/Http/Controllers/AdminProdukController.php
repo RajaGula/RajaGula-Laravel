@@ -52,8 +52,8 @@ class AdminProdukController extends Controller
             }
             $produk->nama_produk         = $request->produk_nama;
             $produk->stok_produk         = $request->produk_stok;
-            $produk->harga         = $request->produk_harga;
-            $produk->id_kategori      = $request->produk_kategori;
+            $produk->harga               = $request->produk_harga;
+            $produk->id_kategori         = $request->produk_kategori;
             $produk->detail_produk       = $request->produk_detail;
             $produk->save();
 
@@ -81,6 +81,7 @@ class AdminProdukController extends Controller
         $request->validate([
             'produk_nama'               => 'required',
             'produk_stok'               => 'required',
+            'produk_harga'              => 'required',
             'produk_kategori'           => 'required',
             'produk_detail'             => 'required',
         ]);
@@ -89,7 +90,8 @@ class AdminProdukController extends Controller
 
         $produk->nama_produk         = $request->produk_nama;
         $produk->stok_produk         = $request->produk_stok;
-        $produk->id_kategori      = $request->produk_kategori;
+        $produk->harga               = $request->produk_harga;
+        $produk->id_kategori         = $request->produk_kategori;
         $produk->detail_produk       = $request->produk_detail;
         $produk->save();
 

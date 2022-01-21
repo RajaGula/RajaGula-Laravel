@@ -27,7 +27,7 @@
                 <section class="section">
                     <div class="card">
                         <div class="card-header">
-                        <a href="{{ route('pelanggan.create') }}" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true" style="margin-right: 10px;"></i>Add Pelanggan</a>
+                        
                         </div>
                         <div class="card-body">
                             <table class="table table-striped" id="table1">
@@ -36,9 +36,7 @@
                                         <th>No</th>
                                         <th>Nama</th>
                                         <th>Email</th>
-                                        <th>Username</th>
-                                        <th>Password</th>
-                                        <th>Tanggal Lahir</th>
+                                        <th>Telepon</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -52,11 +50,9 @@
                                     ?>
                                     <tr>
                                     <td>{{$no}}</td>
-                                    <td>{{$pl->nama}}</td>
+                                    <td>{{$pl->name}}</td>
                                     <td>{{$pl->email}}</td>
-                                    <td>{{$pl->username}}</td>
-                                    <td>{{$pl->password}}</td>
-                                    <td>{{$pl->tanggal_lahir}}</td>
+                                    <td>{{$pl->telepon}}</td>
                                     <td>
                                         <a href="{{route('pelanggan.delete', $pl->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa fa-trash-o" aria-hidden="true" style="margin-right: 10px;"></i>Hapus</a>
                                     </td>
