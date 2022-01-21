@@ -16,6 +16,8 @@ use App\Http\Controllers\PelangganCartController;
 use App\Http\Controllers\PelangganFavoritController;
 use App\Http\Controllers\PelangganTransaksiController;
 
+use App\Http\Controllers\PDFController;
+
 use App\Http\Controllers\AuthPelangganController;
 
 use Illuminate\Support\Facades\Route;
@@ -133,4 +135,6 @@ Route::prefix('/')->group(function () {
         Route::post('/create', [PelangganTransaksiController::class, 'create'])->name('create');
     });
 }); 
+
+Route::get('generate-pdf/{no_order}', [PDFController::class, 'generatePDF']);
         
