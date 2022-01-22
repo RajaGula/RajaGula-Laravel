@@ -63,6 +63,11 @@
                         <div class="col-lg-8">
                             <p style="margin-top: 1%">Tersedia : <b>{{$produk->stok_produk}}</b></p>
                         </div>
+                        @if ($message = Session::get('success'))
+                            <div class="alert alert-danger alert-block" style="margin-top: 10px">   
+                                <strong>{{ $message }}</strong>
+                            </div>
+                        @endif
 
                     </div>
                     <div class="pb-4">

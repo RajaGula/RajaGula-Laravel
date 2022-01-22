@@ -18,7 +18,7 @@ class PelangganAccountController extends Controller
             return view('Pelanggan.page.account.account', compact('account'));
         }
         else{
-            return redirect()->route('home.index');
+            return redirect()->route('home.index')->with(['success' => 'Silahkan Login Terlebih Dahulu']);
         }
     }
 

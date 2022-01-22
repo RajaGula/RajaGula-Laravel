@@ -53,7 +53,11 @@
             <div class="row">
                 <div class="col-lg-4 border-end">
                     <center>
-                        <img src="{{ asset('fotouser/' . $account->foto) }}" alt="foto" class="img-circle " style="height: 12rem;">
+                        @if($account->foto == NULL)
+                            <h5>Silahkan Upload foto</h5>
+                        @else
+                            <img src="{{ asset('fotouser/' . $account->foto) }}" alt="foto" class="img-circle " style="height: 12rem;">
+                        @endif
                         <br>
                         <form action="{{route('account.updateimg')}}" method="POST" id="logForm" enctype="multipart/form-data"> 
                         {{ csrf_field() }}

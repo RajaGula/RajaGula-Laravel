@@ -87,8 +87,8 @@ Route::group(['middleware' => 'admin'], function () {
 
             Route::prefix('adminOmzet')->name('omzet.')->group(function () {
                 Route::get('/', [AdminOmzetController::class, 'index'])->name('index');
+                Route::post('/search', [AdminOmzetController::class, 'search'])->name('search');
                 Route::get('/create', [AdminOmzetController::class, 'create_view'])->name('create');
-                Route::post('/create', [AdminOmzetController::class, 'create_process'])->name('create.process');
                 Route::get('/delete/{id}', [AdminOmzetController::class, 'delete'])->name('delete');
             });
         }); 

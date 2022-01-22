@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use PDF;
 
 use App\Models\order;
+use App\Models\user;
 use App\Models\transaksi;
 
 class PDFController extends Controller

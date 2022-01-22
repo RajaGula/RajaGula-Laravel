@@ -14,19 +14,19 @@
 
 	<center><h1>NOTA PEMBELIAN </h1></center>
 	<hr>
-    @foreach($trans as $a)
-
-    <h4>Nama Pembeli : {{ $a->user->name }}</h4>
-	<h4>Tanggal Pembelian : {{ $a->created_at }}</h4>
-    <h4>Nomer Orderan : {{ $a->no_order }}</h4>
+    
+    @foreach($order as $o)
+    <h4>Nama Pembeli : {{ $o->user->name }}</h4>
+	<h4>Tanggal Pembelian : {{ $o->created_at }}</h4>
+    <h4>Nomer Orderan : {{ $o->no_order }}</h4>
+    @endforeach
 
 	<hr>
 	<h3>Detail Pemesanan</h3>
+    
 	<table style="width:100%;border:1px solid black;border-collapse: collapse; text-align: center;">
-        <?php
-            $no = 0;
-            $no += 1;
-        ?>
+
+        
 		  <thead>
 		    <tr>
 		      <th>No</th>
@@ -37,6 +37,13 @@
 		    </tr>
 		  </thead>
 		  <tbody>
+          <?php
+            $no = 0;
+        ?>
+          @foreach($trans as $a)
+          <?php
+            $no += 1;
+        ?>
 		    <tr>
 		      <th>{{$no}}</th>
 		      <td>{{$a->produk->nama_produk}}</td>
@@ -44,9 +51,10 @@
               <td>Rp {{$a->produk->harga}}</td>
               <td>Rp {{$a->produk->harga*$a->jumlah}}</td>
 		    </tr>
+            @endforeach
 		  </tbody>
 	</table>
-    @endforeach
+    
 
 	<h3>Detail Pembayaran</h3>
     

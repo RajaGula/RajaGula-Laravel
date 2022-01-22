@@ -29,11 +29,14 @@
                 <a class="nav-link" href="{{ route('account.index') }}">ACCOUNT</a>
             </li>
             @if(session()->has('user'))
-            <li class="nav-item">
-                <a class="nav-link" href="{{url('logoutpelanggan')}}"><i class="fa fa-user" aria-hidden="true" style="margin-right: 10px"></i>{{session()->get('user')->name}}</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" ><i class="fa fa-user" aria-hidden="true" style="margin-right: 10px"></i>{{session()->get('user')->name}}</a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{{url('logoutpelanggan')}}">Logout</a></li>
+                </ul>
             </li>
             @else
-            <li class="nav-item">
+            <li class="nav-item ">
                 <a class="nav-link" href="{{ route('loginpelanggan') }}"><i class="fa fa-user" aria-hidden="true" style="margin-right: 10px"></i>Login</a>
             </li>
             @endif

@@ -13,7 +13,6 @@ class AdminTransaksiController extends Controller
     {
         $trans = order::with(['user'])->orderBy('created_at', 'desc')->paginate(5);
 
-
         return view('Admin.Page.dataTransaksi.transaksi', compact('trans'));
     }
 

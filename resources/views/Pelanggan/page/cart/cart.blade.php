@@ -2,9 +2,13 @@
 <script data-require="jquery@3.1.1" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 @section('content')
 
-    <h4 style="font-family: 'Montserrat'; margin-left:120px; margin-top:50px;"><b>Keranjang Saya</b></h4>
+<div class="container mt-5 justify-content-center" id="cont">
+    <h4 style="font-family: 'Montserrat'; margin-top:50px; margin-bottom:30px;"><b>Keranjang Saya</b></h4>
 
-    <div class="container mt-5 justify-content-center" id="cont">
+        <div class="d-grid gap-2" style="padding-left: 20%; padding-right: 20%; margin-top: 30px;margin-bottom:30px;">
+            <a href="{{ route('home.index') }}" class="btn btn-outline-light" name="hapus" style="background-color:#7F9B6E;font-color:white;border-radius:25px 25px 25px 25px;">Belanja Lagi Yuk</a>
+        </div>
+    
         <div class="cont">
         <div class="isitabel">
     <table  class="table table-responsive table-bordered border-success">

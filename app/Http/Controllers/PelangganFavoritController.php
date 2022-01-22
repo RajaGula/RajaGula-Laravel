@@ -22,7 +22,7 @@ class PelangganFavoritController extends Controller
             return view('Pelanggan.page.favorit.favorit', compact('favorit'));
         }
         else{
-            return redirect()->route('home.index');
+            return redirect()->route('home.index')->with(['success' => 'Silahkan Login Terlebih Dahulu']);
         }
     }
 

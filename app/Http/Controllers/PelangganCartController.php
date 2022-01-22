@@ -26,7 +26,7 @@ class PelangganCartController extends Controller
             return view('Pelanggan.page.cart.cart', compact('cart', 'tot'));
         }
         else{
-            return redirect()->route('home.index');
+            return redirect()->route('home.index')->with(['success' => 'Silahkan Login Terlebih Dahulu']);
         }
     }
 
@@ -40,18 +40,24 @@ class PelangganCartController extends Controller
         $user_id = Auth::user()->id;
 
         $pro =Produk::find($id);
-
-        $cart = new cart;
-
-        $cart->id_produk = $produk;
-        $cart->id_user = $user_id;
-        $cart->jumlah = $request->jumlah;
         
-        $cart->save();
-        Session::put('cart', $cart);
+        if($request->jumlah > $pro->stok_produk)
+        {
+            return redirect(route('home.view', $pro->id))->with(['success' => 'Stok Tidak Tersedia']);
+        }
+        else{
+            $cart = new cart;
 
-        $pro->stok_produk = $pro->stok_produk-$request->jumlah;
-        $pro->save();
+            $cart->id_produk = $produk;
+            $cart->id_user = $user_id;
+            $cart->jumlah = $request->jumlah;
+            
+            $cart->save();
+            Session::put('cart', $cart);
+
+            $pro->stok_produk = $pro->stok_produk-$request->jumlah;
+            $pro->save();
+        }
 
         return redirect(route('cart.index'));
     }

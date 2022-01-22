@@ -26,7 +26,7 @@ class PelangganActivityController extends Controller
             return view('Pelanggan.page.activity.activity', compact('trans', 'order'));
         }
         else{
-            return redirect()->route('home.index');
+            return redirect()->route('home.index')->with(['success' => 'Silahkan Login Terlebih Dahulu']);
         }
     }
 }
