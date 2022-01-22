@@ -1,85 +1,35 @@
 @extends('Pelanggan.master')
 
 @section('content')
-
+    @if ($message = Session::get('success'))
+        <div class="alert alert-danger alert-block" style="margin-top: 10px">   
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
         <div>
             <img src="https://drive.google.com/uc?export=view&id=141hk3aox_grX3FWYaGFZU_HVKNE2qrPp" alt="banner" width="100%">
         </div>
         <div class="container">
             <div class="row pt-3">
-                <div class="col-md d-flex justify-content-center pt-5">
+                @foreach($produk as $pr)
+                <div class="col-lg-3 justify-content-center pt-5">
                     <form>
-                        <div class="card" style="width: 15rem;">
-                            <img src="https://drive.google.com/uc?export=view&id=1_vPXN98Z250mptMCe9uPrZlVusHWejcq" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">Keris Merah</h5>
-                                <p class="card-text" style="color:red">Rp 14.000</p>
-                                <div class="d-flex justify-content-center">
-                                    <input class="btn btn-outline-light" style="background-color:#7F9B6E;font-color:white;width:50%;border-radius:25px 25px 25px 25px" type="submit" name="submit" value="&#43; Beli">
+                            <div class="card" style="width: 15rem; margin-bottom:20px">
+                                <img src="{{ asset('fotoproduk/' . $pr->foto_produk) }}" class="card-img-top" height="200px">
+                                <div class="card-body">
+                                    <a href="{{route('home.view', $pr->id)}}" style="text-decoration: none; color: black;">
+                                        <h5 class="card-title">{{$pr->nama_produk}}</h5>
+                                    </a>
+                                    <p class="card-text" style="color:red">Rp {{$pr->harga}}</p>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{route('home.view', $pr->id)}}" class="btn btn-outline-light" style="background-color:#7F9B6E;font-color:white;width:50%;border-radius:25px 25px 25px 25px" type="submit" name="submit"><i class="fa fa-plus" aria-hidden="true" style="margin-right: 10px"></i> Beli</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     </form>
                 </div>
-                <div class="col-md d-flex justify-content-center pt-5">
-                    <form>
-                        <div class="card" style="width: 15rem;">
-                            <img src="https://drive.google.com/uc?export=view&id=1a7M155v00WNVJYt0ZzB7yUpJD-q74QNY" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">MajaManis</h5>
-                                <p class="card-text" style="color:red">Rp 13.000</p>
-                                <div class="d-flex justify-content-center">
-                                    <input class="btn btn-outline-light" style="background-color:#7F9B6E;font-color:white;width:50%;border-radius:25px 25px 25px 25px" type="submit" name="submit" value="&#43; Beli">
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-md d-flex justify-content-center pt-5">
-                    <form>
-                        <div class="card" style="width: 15rem;">
-                            <img src="https://drive.google.com/uc?export=view&id=1Djp8q7h6qBwjfDQ2M7d27TauENqcZinq" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">HiJus</h5>
-                                <p class="card-text" style="color:red">Rp 20.500</p>
-                                <div class="d-flex justify-content-center">
-                                    <input class="btn btn-outline-light" style="background-color:#7F9B6E;font-color:white;width:50%;border-radius:25px 25px 25px 25px" type="submit" name="submit" value="&#43; Beli">
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-md d-flex justify-content-center pt-5">
-                    <form>
-                        <div class="card" style="width: 15rem;">
-                            <img src="https://drive.google.com/uc?export=view&id=1bDaIOIwLV503nhMxOWvlYdxQrpiZ0lgI" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">Raja Gula</h5>
-                                <p class="card-text" style="color:red">Rp 11.499</p>
-                                <div class="d-flex justify-content-center">
-                                    <input class="btn btn-outline-light" style="background-color:#7F9B6E;font-color:white;width:50%;border-radius:25px 25px 25px 25px" type="submit" name="submit" value="&#43; Beli">
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-md d-flex justify-content-center pt-5">
-                    <form>
-                        <div class="card" style="width: 15rem;">
-                            <img src="https://drive.google.com/uc?export=view&id=13vEZ0dmAFlzP8meg68G_ZPgA9QUJ16Pk" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">Tetes Tebu</h5>
-                                <p class="card-text" style="color:red">Rp 11.899</p>
-                                <div class="d-flex justify-content-center">
-                                    <input class="btn btn-outline-light" style="background-color:#7F9B6E;font-color:white;width:50%;border-radius:25px 25px 25px 25px" type="submit" name="submit" value="&#43; Beli">
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                @endforeach
                 
-                <div class="col-md d-flex justify-content-center"> 
-                </div>
             </div>
             <div class="pt-5">
                 <img src="https://drive.google.com/uc?export=view&id=1tz3TASd2M3Jpu_m_t7G6dB7zFDPfMynr" alt="banner" width="100%">
@@ -110,104 +60,24 @@
                 </div>
                 <div class="col-md-9">
                     <div class="row ">
+                    @foreach($produk as $pr)
                         <div class="col-md pt-5">
                             <form>
-                                <div class="card" style="width: 15rem;">
-                                    <img src="https://drive.google.com/uc?export=view&id=1_vPXN98Z250mptMCe9uPrZlVusHWejcq" class="card-img-top">
+                                <div class="card" style="width: 15rem; margin-bottom:20px">
+                                    <img src="{{ asset('fotoproduk/' . $pr->foto_produk) }}" class="card-img-top" height="200px">
                                     <div class="card-body">
-                                        <h5 class="card-title">Keris Merah</h5>
-                                        <p class="card-text" style="color:red">Rp 14.000</p>
+                                        <a href="{{route('home.view', $pr->id)}}" style="text-decoration: none; color: black;">
+                                            <h5 class="card-title">{{$pr->nama_produk}}</h5>
+                                        </a>
+                                        <p class="card-text" style="color:red">Rp {{$pr->harga}}</p>
                                         <div class="d-flex justify-content-center">
-                                            <input class="btn btn-outline-light" style="background-color:#7F9B6E;font-color:white;width:50%;border-radius:25px 25px 25px 25px" type="submit" name="submit" value="&#43; Beli">
+                                            <a href="{{route('home.view', $pr->id)}}" class="btn btn-outline-light" style="background-color:#7F9B6E;font-color:white;width:50%;border-radius:25px 25px 25px 25px" type="submit" name="submit" ><i class="fa fa-plus" aria-hidden="true" style="margin-right: 10px"></i> Beli</a>
                                         </div>
                                     </div>
                                 </div>
                             </form>
                         </div>
-                        <div class="col-md pt-5">
-                            <form>
-                                <div class="card" style="width: 15rem;">
-                                    <img src="https://drive.google.com/uc?export=view&id=1a7M155v00WNVJYt0ZzB7yUpJD-q74QNY" class="card-img-top">
-                                    <div class="card-body">
-                                        <h5 class="card-title">MajaManis</h5>
-                                        <p class="card-text" style="color:red">Rp 13.000</p>
-                                        <div class="d-flex justify-content-center">
-                                            <input class="btn btn-outline-light" style="background-color:#7F9B6E;font-color:white;width:50%;border-radius:25px 25px 25px 25px" type="submit" name="submit" value="&#43; Beli">
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-md pt-5">
-                            <form>
-                                <div class="card" style="width: 15rem;">
-                                    <img src="https://drive.google.com/uc?export=view&id=1Djp8q7h6qBwjfDQ2M7d27TauENqcZinq" class="card-img-top">
-                                    <div class="card-body">
-                                        <h5 class="card-title">HiJus</h5>
-                                        <p class="card-text" style="color:red">Rp 20.500</p>
-                                        <div class="d-flex justify-content-center">
-                                            <input class="btn btn-outline-light" style="background-color:#7F9B6E;font-color:white;width:50%;border-radius:25px 25px 25px 25px" type="submit" name="submit" value="&#43; Beli">
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-md pt-5">
-                            <form>
-                                <div class="card" style="width: 15rem;">
-                                    <img src="https://drive.google.com/uc?export=view&id=1bDaIOIwLV503nhMxOWvlYdxQrpiZ0lgI" class="card-img-top">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Raja Gula</h5>
-                                        <p class="card-text" style="color:red">Rp 11.499</p>
-                                        <div class="d-flex justify-content-center">
-                                            <input class="btn btn-outline-light" style="background-color:#7F9B6E;font-color:white;width:50%;border-radius:25px 25px 25px 25px" type="submit" name="submit" value="&#43; Beli">
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-md pt-5">
-                            <form>
-                                <div class="card" style="width: 15rem;">
-                                    <img src="https://drive.google.com/uc?export=view&id=13vEZ0dmAFlzP8meg68G_ZPgA9QUJ16Pk" class="card-img-top">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Tetes Tebu</h5>
-                                        <p class="card-text" style="color:red">Rp 11.899</p>
-                                        <div class="d-flex justify-content-center">
-                                            <input class="btn btn-outline-light" style="background-color:#7F9B6E;font-color:white;width:50%;border-radius:25px 25px 25px 25px" type="submit" name="submit" value="&#43; Beli">
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-md pt-5">
-                            <form>
-                                <div class="card" style="width: 15rem;">
-                                    <img src="https://drive.google.com/uc?export=view&id=160kpHezun1zpxstPIdkORJmHhwgJmUp8" class="card-img-top">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Selai</h5>
-                                        <p class="card-text" style="color:red">Rp 18.000</p>
-                                        <div class="d-flex justify-content-center">
-                                            <input class="btn btn-outline-light" style="background-color:#7F9B6E;font-color:white;width:50%;border-radius:25px 25px 25px 25px" type="submit" name="submit" value="&#43; Beli">
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-md pt-5">
-                            <form>
-                                <div class="card" style="width: 15rem;">
-                                    <img src="https://drive.google.com/uc?export=view&id=193BB6Ke_1ZX2buDBr3RX0S01f4DVxCXm" class="card-img-top">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Madu</h5>
-                                        <p class="card-text" style="color:red">Rp 16.000</p>
-                                        <div class="d-flex justify-content-center">
-                                            <input class="btn btn-outline-light" style="background-color:#7F9B6E;font-color:white;width:50%;border-radius:25px 25px 25px 25px" type="submit" name="submit" value="&#43; Beli">
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                    @endforeach
                     </div>
                 </div>
             </div>

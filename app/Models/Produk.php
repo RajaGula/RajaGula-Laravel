@@ -13,8 +13,8 @@ class Produk extends Model
     protected $table = 'produks';
     protected $primaryKey = "id";
 
-    public function Kategori(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function kategori()
     {
-        return $this->belongsTo(Kategori::class, 'kategori_id');
+        return $this->belongsTo('App\Models\Kategori', 'id_kategori');
     }
 }

@@ -36,8 +36,7 @@
                                         <th>No</th>
                                         <th>Nama Produk</th>
                                         <th>Stok</th>
-                                        <th>Nama Kategori</th>
-                                        <th>Foto Produk</th>
+                                        <th>Harga Produk</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -53,10 +52,10 @@
                                     <td>{{$no}}</td>
                                     <td>{{$pr->nama_produk}}</td>
                                     <td>{{$pr->stok_produk}}</td>
-                                    <td>{{$pr->id_kategori}}</td>
-                                    <td><img src="{{ asset('fotoproduk/' . $pr->foto_produk) }}" alt="foto" class="img-fluid" width="80"></td>
+                                    <td>{{$pr->harga}}</td>
+                                    
                                     <td>
-                                        <a href="{{route('produk.update', $pr->id)}}" class="btn btn-info"><i class="fa fa-info" aria-hidden="true" style="margin-right: 10px;"></i>Detail</a>
+                                        <a href="{{route('produk.view', $pr->id)}}" class="btn btn-info" ><i class="fa fa-info" aria-hidden="true" style="margin-right: 10px;"></i>Detail</a>
                                         <a href="{{route('produk.update', $pr->id)}}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true" style="margin-right: 10px;"></i>Ubah</a>
                                         <a href="{{route('produk.delete', $pr->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa fa-trash-o" aria-hidden="true" style="margin-right: 10px;"></i>Hapus</a>
                                     </td>
@@ -64,6 +63,10 @@
                                 @endforeach
                                 </tbody>
                             </table>
+
+                            <div class="d-flex justify-content-center">
+                                {!! $produk->links() !!}
+                            </div>
                             
                         </div>
 
@@ -71,4 +74,6 @@
 
                 </section>
             </div>
+
+    
 @endsection
