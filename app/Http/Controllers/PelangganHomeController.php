@@ -8,6 +8,12 @@ use App\Models\Kategori;
 
 class PelangganHomeController extends Controller
 {
+    public function landing()
+    {
+
+        return view('Pelanggan.landing');
+    }
+
     public function index()
     {
         $produk = Produk::with(['kategori'])->paginate(5);

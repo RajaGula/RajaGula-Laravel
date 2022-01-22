@@ -14,7 +14,7 @@
             </ul>
         <ul class="navbar-nav  mb-2 mb-lg-0" style="color:black; font-family: 'Montserrat'; font-weight:bold">
             <li class="nav-item">
-                <a class="nav-link" href="/" >HOME</a>
+                <a class="nav-link" href="{{ route('home.index') }}" >HOME</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('activity.index') }}">ACTIVITY</a>

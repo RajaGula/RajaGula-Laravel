@@ -34,6 +34,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>Tanggal Pesanan</th>
                                         <th>Nama Pelanggan</th>
                                         <th>Nomer Orderan</th>
                                         <th>Total Transaksi</th>
@@ -51,6 +52,7 @@
                                     ?>
                                     <tr>
                                     <td>{{$no}}</td>
+                                    <td>{{$ts->created_at}}</td>
                                     <td>{{$ts->user->name}}</td>
                                     <td>{{$ts->no_order}}</td>
                                     <td>{{$ts->total}}</td>
@@ -58,8 +60,9 @@
                                     
                                     <td>
                                         <a href="{{route('admintransaksi.view', $ts->no_order)}}" class="btn btn-info" ><i class="fa fa-info" aria-hidden="true" style="margin-right: 10px;"></i>Detail</a>
-                                        <a href="{{route('admintransaksi.update', $ts->id)}}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true" style="margin-right: 10px;"></i>Ubah</a>
-                                        <a href="{{route('admintransaksi.delete', $ts->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa fa-trash-o" aria-hidden="true" style="margin-right: 10px;"></i>Hapus</a>
+                                        @if($ts->status != 'Confirmed')
+                                            <a href="{{route('admintransaksi.update', $ts->id)}}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true" style="margin-right: 10px;"></i>Accept</a>
+                                        @endif    
                                     </td>
                                 </tr>
                                 

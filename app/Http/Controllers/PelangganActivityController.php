@@ -19,7 +19,7 @@ class PelangganActivityController extends Controller
     {
         if(Session::has('user'))
         {
-            $order = order::orderBy('created_at', 'desc')->get();
+            $order = order::orderBy('created_at', 'desc')->where('id_user', Auth::user()->id)->get();
             
             $trans = transaksi::with(['produk'])->where('id_user', Auth::user()->id)->get();
 

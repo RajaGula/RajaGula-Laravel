@@ -81,10 +81,7 @@ Route::group(['middleware' => 'admin'], function () {
             Route::prefix('adminTransaksi')->name('admintransaksi.')->group(function () {
                 Route::get('/', [AdminTransaksiController::class, 'index'])->name('index');
                 Route::get('/view/{no_order}', [AdminTransaksiController::class, 'view'])->name('view');
-                Route::get('/create', [AdminTransaksiController::class, 'create_view'])->name('create');
-                Route::post('/create', [AdminTransaksiController::class, 'create_process'])->name('create.process');
-                Route::get('/update/{id}', [AdminTransaksiController::class, 'update_view'])->name('update');
-                Route::post('/update/{id}', [AdminTransaksiController::class, 'update_process'])->name('update.process');
+                Route::get('/update/{id}', [AdminTransaksiController::class, 'update'])->name('update');
                 Route::get('/delete/{id}', [AdminTransaksiController::class, 'delete'])->name('delete');
             });
 
@@ -99,7 +96,8 @@ Route::group(['middleware' => 'admin'], function () {
 
 Route::prefix('/')->group(function () {
     Route::prefix('/')->name('home.')->group(function () {
-        Route::get('/', [PelangganHomeController::class, 'index'])->name('index');
+        Route::get('/', [PelangganHomeController::class, 'landing'])->name('landing');
+        Route::get('/marketplace', [PelangganHomeController::class, 'index'])->name('index');
         Route::get('/detail/{id}', [PelangganHomeController::class, 'view'])->name('view');
     });
 
