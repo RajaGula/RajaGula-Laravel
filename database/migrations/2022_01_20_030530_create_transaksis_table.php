@@ -20,7 +20,7 @@ class CreateTransaksisTable extends Migration
             $table->unsignedBigInteger('id_user');
             $table->index('id_user');
             $table->integer('jumlah');
-            $table->string('status');
+            $table->string('no_order');
             $table->timestamps();
         });
     }
