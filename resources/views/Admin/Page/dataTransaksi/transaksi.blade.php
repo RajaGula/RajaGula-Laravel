@@ -60,8 +60,10 @@
                                     
                                     <td>
                                         <a href="{{route('admintransaksi.view', $ts->no_order)}}" class="btn btn-info" ><i class="fa fa-info" aria-hidden="true" style="margin-right: 10px;"></i>Detail</a>
-                                        @if($ts->status != 'Confirmed')
+                                        @if($ts->status == 'Sudah Upload Bukti Pembayaran')
                                             <a href="{{route('admintransaksi.update', $ts->id)}}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true" style="margin-right: 10px;"></i>Accept</a>
+                                        @elseif($ts->status == 'Confirmed')
+                                            <a href="{{route('admintransaksi.kirim', $ts->id)}}" class="btn btn-success"><i class="fa fa-edit" aria-hidden="true" style="margin-right: 10px;"></i>Kirim Barang</a>
                                         @endif    
                                     </td>
                                 </tr>

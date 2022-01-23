@@ -33,7 +33,7 @@
             <td style="line-height: 8rem;text-align: center">{{$fav->produk->nama_produk}}</td>
             <td style="line-height: 8rem;text-align: center">Rp {{$fav->produk->harga}}</td>
             <td style="line-height: 8rem;text-align: center"><center>
-                <a class="btn btn-outline-light" href="{{route('home.view', $fav->id)}}" style="background-color:#7F9B6E;font-color:white;width:40%;border-radius:25px 25px 25px 25px">Detail</button>
+                <a class="btn btn-outline-light" href="{{route('home.view', $fav->produk->id)}}" style="background-color:#7F9B6E;font-color:white;width:40%;border-radius:25px 25px 25px 25px">Detail</button>
                 <a class="btn btn-danger" href="{{route('favorit.delete', $fav->id)}}" onclick="return confirm('Are you sure?')" style="font-color:white;width:40%;border-radius:25px 25px 25px 25px">Hapus</a>
             </center></td>
         </tr>

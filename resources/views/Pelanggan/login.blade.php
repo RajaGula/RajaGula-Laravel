@@ -35,7 +35,11 @@
             <div class="card" style="border-radius: 15px;">
               <div class="card-body p-5">
                 <h2 class="text-uppercase text-center mb-5" style="font-family: 'Montserrat'; color: #5e8148; "><b>Masuk</b></h2>
-  
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-danger alert-block" style="margin-top: 10px">   
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @endif
                 <form action="{{url('proses_loginpelanggan')}}" method="POST" id="logForm">
                     {{ csrf_field() }}
 

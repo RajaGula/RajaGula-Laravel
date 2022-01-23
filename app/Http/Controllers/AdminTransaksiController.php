@@ -35,4 +35,15 @@ class AdminTransaksiController extends Controller
 
         return redirect(route('admintransaksi.index'))->with(['success' => 'Pesanan Berhasil di Proses']);
     }
+
+    public function kirim($id)
+    {
+        
+        $order = order::find($id);
+
+        $order->status     = 'Barang Kirim';
+        $order->save();
+
+        return redirect(route('admintransaksi.index'))->with(['success' => 'Pesanan Berhasil di Proses']);
+    }
 }

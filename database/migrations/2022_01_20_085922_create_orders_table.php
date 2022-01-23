@@ -16,6 +16,12 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('no_order');
+            $table->unsignedBigInteger('id_user');
+            $table->index('id_user');
+            $table->string('buktibayar');
+            $table->integer('ongkir')->default('15000');
+            $table->integer('total');
+            $table->string('status')->default('On Prosess');
             $table->timestamps();
         });
     }

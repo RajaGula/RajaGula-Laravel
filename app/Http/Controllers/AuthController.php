@@ -48,8 +48,7 @@ class AuthController extends Controller
             }
             else if($request->Password!=$admin->password)
             {
-                $request->session()->flash('error', 'Invalid Password');
-                return view('Admin.login');
+                return view('Admin.login')->with(['success' => 'Invalid Password']);
             }
         }
     }
@@ -70,7 +69,7 @@ class AuthController extends Controller
             return redirect(route('home.index'));
         } 
         else{
-            return redirect(route('loginpelanggan'))->with('error', 'gagal login say');
+            return redirect(route('loginpelanggan'))->with('success', 'Gagal Login Username dan Password Tidak Sesuai');
         }
     }
     
