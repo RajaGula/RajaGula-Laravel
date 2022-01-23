@@ -29,4 +29,15 @@ class PelangganActivityController extends Controller
             return redirect()->route('home.index')->with(['success' => 'Silahkan Login Terlebih Dahulu']);
         }
     }
+
+    public function update($id)
+    {
+        
+        $order = order::find($id);
+
+        $order->status     = 'Selesai';
+        $order->save();
+
+        return redirect(route('transaksi.index'))->with(['success' => 'Pesanan Berhasil di Proses']);
+    }
 }

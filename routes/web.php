@@ -82,6 +82,7 @@ Route::group(['middleware' => 'admin'], function () {
                 Route::get('/', [AdminTransaksiController::class, 'index'])->name('index');
                 Route::get('/view/{no_order}', [AdminTransaksiController::class, 'view'])->name('view');
                 Route::get('/update/{id}', [AdminTransaksiController::class, 'update'])->name('update');
+                Route::get('/kirim/{id}', [AdminTransaksiController::class, 'kirim'])->name('kirim');
                 Route::get('/delete/{id}', [AdminTransaksiController::class, 'delete'])->name('delete');
             });
 
@@ -109,6 +110,7 @@ Route::prefix('/')->group(function () {
 
     Route::prefix('/activity')->name('activity.')->group(function () {
         Route::get('/', [PelangganActivityController::class, 'index'])->name('index');
+        Route::get('/update/{id}', [PelangganActivityController::class, 'update'])->name('update');
     });
 
     Route::prefix('/favorit')->name('favorit.')->group(function () {

@@ -27,15 +27,18 @@
 
             <tr>
                 <th colspan="4" style="line-height: 3rem">Nomer Order : {{$or->no_order}} <b style="color: red">( {{$or->status}} )</b></th>
-                <th style="line-height: 3rem">Total : {{$or->total}} </th>
+                <th style="line-height: 3rem"><center>Total : Rp {{$or->total}} </center></th>
                 @if ($or->status == 'On Prosess')
                     <td style="line-height: 3rem"><center><a class="btn btn-outline-light" href="{{ route('transaksi.uploadview', $or->id) }}" style="background-color:#7F9B6E;font-color:white;border-radius:25px 25px 25px 25px">Bayar Sekarang</a></center></td>
                 @elseif($or->status == 'Confirmed')
                     <td style="line-height: 3rem"><center><a class="btn btn-outline-light" href="{{ url('generate-pdf', $or->no_order) }}" style="background-color:#7F9B6E;font-color:white;border-radius:25px 25px 25px 25px">Cetak Nota</a></center></td>
+                @elseif($or->status == 'Barang Kirim')
+                    <td style="line-height: 3rem"><center><a class="btn btn-outline-light" href="{{ route('activity.update', $or->id) }}" style="background-color:#7F9B6E;font-color:white;border-radius:25px 25px 25px 25px">Barang Sampai</a></center></td>
                 @elseif($or->status == 'Sudah Upload Bukti Pembayaran')
                     <td style="line-height: 3rem"><center><div class="btn btn-outline-light" style="background-color:#7F9B6E;font-color:white;border-radius:25px 25px 25px 25px">Waiting List</div></center></td>
                 @elseif($or->status == 'Selesai')
-                    <td style="line-height: 3rem"><center><div class="btn btn-outline-light" style="background-color:#7F9B6E;font-color:white;border-radius:25px 25px 25px 25px">Review Product</div></center></td>
+                    <td style="line-height: 3rem"><center><div class="btn btn-outline-light" style="background-color:#7F9B6E;font-color:white;border-radius:25px 25px 25px 25px">Review Product</div>
+                    <a class="btn btn-outline-light" href="{{ url('generate-pdf', $or->no_order) }}" style="background-color:#7F9B6E;font-color:white;border-radius:25px 25px 25px 25px">Cetak Nota</a></center></td>
                 @endif
             </tr>
             
