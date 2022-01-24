@@ -46,7 +46,7 @@
             @endforeach
             <tr>
                 <th colspan="4" style="line-height: 2rem;">Total Belanja</th>
-                <th style="line-height: 2rem;text-align: center"><input class="form-control" type="hidden" name="total" value="{{$tot}}"></input>Rp {{$tot}}</th>
+                <th style="line-height: 2rem;text-align: center">Rp {{$tot}}</th>
                 <th><center><a href="{{ route('transaksi.checkout') }}" class="btn btn-outline-light" name="hapus" style="background-color:#7F9B6E;font-color:white;width:80%;border-radius:25px 25px 25px 25px;">Checkout</a></center></th>
             </tr>
        

@@ -27,7 +27,7 @@
             Ikuti Kami
           </h6>
           <p>
-            <i class="fa fa-instagram" aria-hidden="true" style="margin-right: 20px"></i><a href="#!" class="text-reset" style="text-decoration:none;">Instagram</a>
+            <i class="fa fa-instagram" aria-hidden="true" style="margin-right: 20px"></i><a href="https://www.instagram.com/rajagula.store/" target="_blank" class="text-reset" style="text-decoration:none;">Instagram</a>
           </p>
         </div>
         <!-- Grid column -->
