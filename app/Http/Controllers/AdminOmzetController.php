@@ -26,7 +26,7 @@ class AdminOmzetController extends Controller
         $order = order::with(['user'])
         ->whereYear('created_at', '=', $request->tahun)
         ->whereMonth('created_at', '=', $request->bulan)
-        ->paginate(5);
+        ->get();
 
         $tot = order::whereYear('created_at', '=', $request->tahun)
             ->whereMonth('created_at', '=', $request->bulan)

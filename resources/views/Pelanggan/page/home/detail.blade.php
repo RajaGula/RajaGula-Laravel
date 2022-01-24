@@ -85,7 +85,7 @@
         <div class="container mt-4" style="border-style:solid; border-width:1px; border-color: #7F9B6E;border-radius: 5px;">
             <p class="mt-3"> <img src="{{ asset('fotouser/' . $rev->user->foto) }}" width="50" height="50" alt="" style="margin-right: 2%; border-radius: 25px;" ><b>{{$rev->user->name}}</b></p>
             <p>{{$rev->komentar}}</p>
-            <p style="text-align: right; color: #b3b3b3">{{$rev->created_at}}</p>
+            <p style="text-align: right; color: #b3b3b3">{{date('d-m-Y', strtotime($rev->created_at));}}</p>
         </div>
     @endforeach
 

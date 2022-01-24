@@ -51,7 +51,7 @@
                                     ?>
                                 <tr>
                                     <td>{{$no}}</td>
-                                    <td>{{$ts->created_at}}</td>
+                                    <td>{{date('d-m-Y', strtotime($ts->created_at));}}</td>
                                     <td>{{$ts->user->name}}</td>
                                     <td>{{$ts->no_order}}</td>
                                     <td>Rp {{$ts->ongkir}}</td>
@@ -67,9 +67,6 @@
                                 </tbody>
                             </table>
                             
-                            <div class="d-flex justify-content-center">
-                                {!! $order  ->links() !!}
-                            </div>
                         </div>
 
                     </div>

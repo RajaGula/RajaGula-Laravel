@@ -37,11 +37,14 @@ class PelangganReviewController extends Controller
     public function create($id, Request $request)
     {
         if(Session::has('user')){
+
+            $current_date_time = date('Y-m-d H:i:s');
+            
             $user_id = Auth::user()->id;
 
             $request->validate([
                 'review'            => 'required',
-                'no_order'          => 'required',
+                'produk'          => 'required',
             ]);
 
             $trans = transaksi::with(['produk'])
@@ -49,15 +52,20 @@ class PelangganReviewController extends Controller
             ->where('no_order', $request->no_order) 
             ->get();
 
-            foreach($trans as $ts)
-            {
-                $review = new review;
-        
-                $review->komentar           = $request->review;
-                $review->id_produk          = $ts->id_produk;
-                $review->id_user            = $user_id;
-                $review->save();
+            $review = [];
+            for($i = 1; $i <= count($request->review); $i++) {
+
+                $review[] = [
+                    'komentar' => $request->review[$i],
+                    'id_produk' => $request->produk[$i],
+                    'id_user' => $user_id,
+                    'created_at' => $current_date_time,
+                    'updated_at'    => $current_date_time,
+                ];
+                
             }
+            review::insert($review);
+
             return redirect(route('home.index'))->with(['success' => 'Tambah Kategori Berhasil']);
         }
         else{

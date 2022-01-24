@@ -52,10 +52,10 @@
                                     ?>
                                     <tr>
                                     <td>{{$no}}</td>
-                                    <td>{{$ts->created_at}}</td>
+                                    <td>{{date('d-m-Y', strtotime($ts->created_at));}}</td>
                                     <td>{{$ts->user->name}}</td>
                                     <td>{{$ts->no_order}}</td>
-                                    <td>{{$ts->total}}</td>
+                                    <td>Rp {{$ts->total}}</td>
                                     <td><img src="{{ asset('buktipembayaran/' . $ts->buktibayar) }}" alt="foto" class="img-fluid" style="height: 100px;"></td>
                                     
                                     <td>
