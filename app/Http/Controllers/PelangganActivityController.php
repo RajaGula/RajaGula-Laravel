@@ -38,6 +38,6 @@ class PelangganActivityController extends Controller
         $order->status     = 'Selesai';
         $order->save();
 
-        return redirect(route('transaksi.index'))->with(['success' => 'Pesanan Berhasil di Proses']);
+        return redirect(route('activity.index'))->with(['success' => 'Pesanan Berhasil di Proses']);
     }
 }

@@ -15,6 +15,7 @@ use App\Http\Controllers\PelangganActivityController;
 use App\Http\Controllers\PelangganCartController;
 use App\Http\Controllers\PelangganFavoritController;
 use App\Http\Controllers\PelangganTransaksiController;
+use App\Http\Controllers\PelangganReviewController;
 
 use App\Http\Controllers\PDFController;
 
@@ -124,6 +125,11 @@ Route::prefix('/')->group(function () {
         Route::post('/create/{id}', [PelangganCartController::class, 'create'])->name('create');
         Route::post('/update/{id}', [PelangganCartController::class, 'update'])->name('update');
         Route::get('/delete/{id}', [PelangganCartController::class, 'delete'])->name('delete');
+    });
+
+    Route::prefix('/review')->name('review.')->group(function () {
+        Route::get('/{id}', [PelangganReviewController::class, 'index'])->name('index');
+        Route::post('/create/{id}', [PelangganReviewController::class, 'create'])->name('create');
     });
 
     Route::prefix('/transaksi')->name('transaksi.')->group(function () {

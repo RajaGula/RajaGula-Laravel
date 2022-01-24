@@ -28,16 +28,22 @@ class PelangganFavoritController extends Controller
 
     public function create($id)
     {
-        $produk = Produk::find($id)->id;
-        $user_id = Auth::user()->id;
+        if(Session::has('user')){
+            $produk = Produk::find($id)->id;
+            $user_id = Auth::user()->id;
 
-        $favorit = new Favorit;
+            $favorit = new Favorit;
 
-        $favorit->id_produk = $produk;
-        $favorit->id_user = $user_id;
-        $favorit->save();
+            $favorit->id_produk = $produk;
+            $favorit->id_user = $user_id;
+            $favorit->save();
 
-        return redirect(route('favorit.index'));
+            return redirect(route('favorit.index'));
+
+        }
+        else{
+            return redirect()->route('home.index')->with(['success' => 'Silahkan Login Terlebih Dahulu']);
+        }
 
     }
 

@@ -32,48 +32,39 @@ class PelangganCartController extends Controller
 
     public function create($id, Request $request)
     {
-        $request->validate([
-            'jumlah'        => 'required',
-        ]);
+        if(Session::has('user')){
+            $request->validate([
+                'jumlah'        => 'required',
+            ]);
 
-        $produk = Produk::find($id)->id;
-        $user_id = Auth::user()->id;
+            $produk = Produk::find($id)->id;
+            $user_id = Auth::user()->id;
 
-        $pro =Produk::find($id);
-        
-        if($request->jumlah > $pro->stok_produk)
-        {
-            return redirect(route('home.view', $pro->id))->with(['success' => 'Stok Tidak Tersedia']);
+            $pro =Produk::find($id);
+            
+            if($request->jumlah > $pro->stok_produk)
+            {
+                return redirect(route('home.view', $pro->id))->with(['success' => 'Stok Tidak Tersedia']);
+            }
+            else{
+                $cart = new cart;
+
+                $cart->id_produk = $produk;
+                $cart->id_user = $user_id;
+                $cart->jumlah = $request->jumlah;
+                
+                $cart->save();
+                Session::put('cart', $cart);
+
+                $pro->stok_produk = $pro->stok_produk-$request->jumlah;
+                $pro->save();
+            }
+
+            return redirect(route('cart.index'));
         }
         else{
-            $cart = new cart;
-
-            $cart->id_produk = $produk;
-            $cart->id_user = $user_id;
-            $cart->jumlah = $request->jumlah;
-            
-            $cart->save();
-            Session::put('cart', $cart);
-
-            $pro->stok_produk = $pro->stok_produk-$request->jumlah;
-            $pro->save();
+            return redirect()->route('home.index')->with(['success' => 'Silahkan Login Terlebih Dahulu']);
         }
-
-        return redirect(route('cart.index'));
-    }
-
-    public function update($id, Request $request)
-    {
-        $request->validate([
-            'jumlah'        => 'required',
-        ]);
-
-        $cart = cart::find($id);
-
-        $cart->jumlah = $request->jumlah;
-        $cart->save();
-
-        return redirect(route('cart.index'));
     }
 
     public function delete($id)

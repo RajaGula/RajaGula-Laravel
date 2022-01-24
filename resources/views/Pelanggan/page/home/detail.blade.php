@@ -81,11 +81,13 @@
     <div class="container mt-5">
         <h5 style="font-family: 'Montserrat';" class="text-center"><b>Review</b></h5>
     </div>
-    <div class="container mt-4" style="border-style:solid; border-width:1px; border-color: #7F9B6E;border-radius: 5px;">
-        <p class="mt-3"> <img src="https://drive.google.com/uc?export=view&id=1WKXxH__U44EpkC_M8_3F6aauvaTiYS9z" width="50" height="50" alt="" style="margin-right: 2%" ><b>Revya</b></p>
-        <p>Enak dan segar!</p>
-        <p style="text-align: right; color: #b3b3b3">18 Januari 2022</p>
-    </div>
+    @foreach($review as $rev)
+        <div class="container mt-4" style="border-style:solid; border-width:1px; border-color: #7F9B6E;border-radius: 5px;">
+            <p class="mt-3"> <img src="{{ asset('fotouser/' . $rev->user->foto) }}" width="50" height="50" alt="" style="margin-right: 2%; border-radius: 25px;" ><b>{{$rev->user->name}}</b></p>
+            <p>{{$rev->komentar}}</p>
+            <p style="text-align: right; color: #b3b3b3">{{$rev->created_at}}</p>
+        </div>
+    @endforeach
 
 
     <script>

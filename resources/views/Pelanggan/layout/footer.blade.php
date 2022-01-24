@@ -2,8 +2,8 @@
 <footer class="text-center text-lg-start bg-light text-muted" style="margin-top: 120px; font-family: 'Montserrat';">
   <!-- Section: Social media -->
   <!-- Section: Links  -->
-  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom" style="background-color: #C7E7B4;">
-    <div class="container text-center text-md-start mt-5">
+  <section class="justify-content-center justify-content-lg-between p-4 border-bottom" style="background-color: #C7E7B4;">
+    <div class="container text-center mt-5">
       <!-- Grid row -->
       <div class="row">
         <!-- Grid column -->

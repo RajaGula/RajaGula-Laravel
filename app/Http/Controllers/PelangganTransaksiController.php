@@ -13,7 +13,6 @@ use App\Models\Favorit;
 use App\Models\cart;
 use App\Models\transaksi;
 use App\Models\order;
-use App\Models\pembayaran;
 use Session;
 
 class PelangganTransaksiController extends Controller
@@ -55,36 +54,41 @@ class PelangganTransaksiController extends Controller
 
     public function create(Request $request)
     {
-        $cart =  Cart::count();        
-        $user_id = Auth::user()->id;
-        $cr = cart::with(['produk'])->where('id_user', Auth::user()->id)->paginate(5);
-        $numberorder = Str::random(5);
+        if(Session::has('user')){
+            $cart =  Cart::count();        
+            $user_id = Auth::user()->id;
+            $cr = cart::with(['produk'])->where('id_user', Auth::user()->id)->paginate(5);
+            $numberorder = Str::random(5);
 
-        $tot = cart::where('id_user', Auth::user()->id)
-            ->select('produks.harga', 'produks.id as id_produk', 'produks.harga', 'carts.jumlah', 'carts.id as id')
-            ->join('produks', 'produks.id', '=', 'carts.id_produk')
-            ->sum(cart::raw('produks.harga * carts.jumlah'));
+            $tot = cart::where('id_user', Auth::user()->id)
+                ->select('produks.harga', 'produks.id as id_produk', 'produks.harga', 'carts.jumlah', 'carts.id as id')
+                ->join('produks', 'produks.id', '=', 'carts.id_produk')
+                ->sum(cart::raw('produks.harga * carts.jumlah'));
 
 
-        $order = new order;
-        $order->id_user = $user_id;
-        $order->no_order = $numberorder;
-        $order->total = $tot;
-        $order->save();
+            $order = new order;
+            $order->id_user = $user_id;
+            $order->no_order = $numberorder;
+            $order->total = $tot;
+            $order->save();
 
-        foreach($cr as $c)
-		{
-            $transaksi = new transaksi;
-            $transaksi->id_produk = $c->id_produk;
-            $transaksi->id_user = $user_id;
-            $transaksi->jumlah =  $c->jumlah;
-            $transaksi->no_order = $numberorder;
-            $transaksi->save();
+            foreach($cr as $c)
+            {
+                $transaksi = new transaksi;
+                $transaksi->id_produk = $c->id_produk;
+                $transaksi->id_user = $user_id;
+                $transaksi->jumlah =  $c->jumlah;
+                $transaksi->no_order = $numberorder;
+                $transaksi->save();
 
-            $c->delete();
+                $c->delete();
+            }
+
+            return redirect(route('transaksi.uploadview', $order->id));
         }
-
-        return redirect(route('transaksi.uploadview', $order->id));
+        else{
+            return redirect()->route('home.index');
+        }
     }
 
     public function bayar()

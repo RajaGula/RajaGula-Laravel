@@ -37,7 +37,7 @@
                 @elseif($or->status == 'Sudah Upload Bukti Pembayaran')
                     <td style="line-height: 3rem"><center><div class="btn btn-outline-light" style="background-color:#7F9B6E;font-color:white;border-radius:25px 25px 25px 25px">Waiting List</div></center></td>
                 @elseif($or->status == 'Selesai')
-                    <td style="line-height: 3rem"><center><div class="btn btn-outline-light" style="background-color:#7F9B6E;font-color:white;border-radius:25px 25px 25px 25px">Review Product</div>
+                    <td style="line-height: 3rem"><center><a href="{{ route('review.index', $or->id) }}" class="btn btn-outline-light" style="background-color:#7F9B6E;font-color:white;border-radius:25px 25px 25px 25px">Review Product</a>
                     <a class="btn btn-outline-light" href="{{ url('generate-pdf', $or->no_order) }}" style="background-color:#7F9B6E;font-color:white;border-radius:25px 25px 25px 25px">Cetak Nota</a></center></td>
                 @endif
             </tr>
