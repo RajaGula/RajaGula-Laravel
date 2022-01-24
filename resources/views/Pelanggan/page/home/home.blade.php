@@ -63,21 +63,21 @@
                 <div class="col-md pt-5">
                     <h5>Urutkan :</h5>
                     <form>
-                        <div class="form-check">
+                        <div class="form-check" data-filter=".baru" id='baru'>
                             <input class="form-check-input"  type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1" data-filter=".baru" id='baru'>
+                            <label class="form-check-label" for="flexRadioDefault1" >
                                 Produk Terbaru 
                             </label>
                         </div>
-                        <div class="form-check">
+                        <div class="form-check" data-filter=".harga" id='harga'>
                             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                            <label class="form-check-label" for="flexRadioDefault2" data-filter=".harga" id='harga'>
+                            <label class="form-check-label" for="flexRadioDefault2" >
                                 Harga Terendah - Harga Tertinggi
                             </label>
                         </div>
-                        <div class="form-check">
+                        <div class="form-check" data-filter=".produk" id='produk'>
                             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-                            <label class="form-check-label" for="flexRadioDefault3" data-filter=".produk" id='produk'>
+                            <label class="form-check-label" for="flexRadioDefault3" >
                                 Produk A - Z
                             </label>
                         </div>
