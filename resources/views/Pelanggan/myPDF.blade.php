@@ -12,7 +12,7 @@
 </head>
 <body>
 
-	<center><h1>NOTA PEMBELIAN </h1></center>
+	<center><img src="{{ public_path('logo.png') }}" width="300" height="80" alt="logo"><h1>NOTA PEMBELIAN </h1></center>
 	<hr>
     
     @foreach($order as $o)
@@ -30,6 +30,7 @@
 		  <thead>
 		    <tr>
 		      <th>No</th>
+              <th>Foto Produk</th>
 		      <th>Nama Produk</th>
 		      <th>Jumlah</th>
 		      <th>Harga</th>
@@ -46,6 +47,7 @@
         ?>
 		    <tr>
 		      <th>{{$no}}</th>
+              <td><img src="{{ public_path('fotoproduk/' . $a->produk->foto_produk) }}" width="100" height="80" alt="logo" style="margin-bottom: 20px;margin-top: 20px"></td>
 		      <td>{{$a->produk->nama_produk}}</td>
 		      <td>{{$a->jumlah}}</td>
               <td>Rp {{$a->produk->harga}}</td>

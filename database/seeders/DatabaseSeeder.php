@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Admin;
+use App\Models\admin;
 
 class DatabaseSeeder extends Seeder
 {
@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($user as $key => $value) {
-            Admin::create($value);
+            admin::create($value);
         }
     }
 }

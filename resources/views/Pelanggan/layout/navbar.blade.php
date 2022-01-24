@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item" >
-                    <a class="navbar-brand mx-100" href="#">
+                    <a class="navbar-brand mx-100" href="{{ route('home.index') }}">
                         <img src="{{asset('logo.png')}}" width="200" height="60" alt="">
                     </a>
                 </li>

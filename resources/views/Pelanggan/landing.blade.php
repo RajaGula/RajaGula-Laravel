@@ -18,7 +18,7 @@
     </head>
     <body>
 
-        <nav class="navbar center navbar-expand-sm navbar-light bg-light navbar-fixed">
+        <nav class="navbar center navbar-expand-sm navbar-light bg-light navbar-fixed" >
             <div class="container">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -40,11 +40,11 @@
                 <div class="col-lg-4 col-md-12 m-auto">
                     <h5 style="text-align:center">Gula berkualitas tinggi, karena Raja Gula Rajanya para gula!</h5>
                     <div class="d-flex justify-content-center pt-4">
-                        <a href="{{ route('home.index') }}" class="btn btn-outline-light" style="background-color:#7F9B6E;font-color:white;width:50%;border-radius:15px 15px 15px 15px" >AYO BELANJA</a>
+                        <a href="{{ route('home.index') }}" class="btn btn-outline-light" style="background-color:#7F9B6E;width:50%;border-radius:15px 15px 15px 15px" >AYO BELANJA</a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12">
-                    <img src="https://drive.google.com/uc?export=view&id=14aEPmRjwcti8jyBuhv6sEnR1rvFDIjys" style="width:70%;margin-left:100px">
+                    <img src="https://drive.google.com/uc?export=view&id=14aEPmRjwcti8jyBuhv6sEnR1rvFDIjys" style="width:70%;margin-left:100px;">
                 </div>
             </div>
             <div class="row d-flex justify-content-center text-center pt-5 mt-4">
