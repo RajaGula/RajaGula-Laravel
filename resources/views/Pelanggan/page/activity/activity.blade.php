@@ -51,7 +51,7 @@
                         <th scope="row" style="line-height: 8rem; text-align: center">{{$no}}</th>
                         <td style="line-height: 8rem;text-align: center"><center><img src="{{ asset('fotoproduk/' . $ts->produk->foto_produk) }}" alt="foto" class="img-fluid" style="height: 8rem; padding-right: 0;"><center></td>
                         <td style="line-height: 8rem;text-align: center">{{$ts->produk->nama_produk}}</td>
-                        <td style="line-height: 8rem;text-align: center"><input class="form-control" type="hidden" name="jumlah" value="{{$ts->jumlah}}"></input>{{$ts->jumlah}}</td>
+                        <td style="line-height: 8rem;text-align: center">{{$ts->jumlah}}</td>
                         <td style="line-height: 8rem;text-align: center">Rp {{$ts->produk->harga * $ts->jumlah}}</td>
                         <td style="line-height: 8rem;text-align: center">{{$ts->status}}</td>
                     </tr>
