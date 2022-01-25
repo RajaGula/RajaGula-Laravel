@@ -10,10 +10,12 @@
     <div class="container mt-4" style="border-style:solid; border-width:1px; border-color: #7F9B6E;border-radius: 5px; padding:10px;">
         <div style="margin-left: 30px">
             <h6 class="mt-2 pb-4"><b>Detail Penerima</b></h6>
-            <p>{{session()->get('user')->name}}</p>
-            <p>{{session()->get('user')->telepon}}</p>
-            <p>{{session()->get('user')->alamat}}</p>
-            <p class="pt-4" style="color: red; font-size:12px">*Pengiriman menggunakan jasa JNE</p>
+            @foreach($user as $us)
+                <p>{{$us->name}}</p>
+                <p>{{$us->telepon}}</p>
+                <p>{{$us->alamat}}</p>
+                <p class="pt-4" style="color: red; font-size:12px">*Pengiriman menggunakan jasa JNE</p>
+            @endforeach
         </div>
     </div>
 

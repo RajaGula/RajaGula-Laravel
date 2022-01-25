@@ -66,7 +66,7 @@ class PelangganReviewController extends Controller
             }
             review::insert($review);
 
-            return redirect(route('home.index'))->with(['success' => 'Tambah Kategori Berhasil']);
+            return redirect(route('home.index'));
         }
         else{
             return redirect()->route('home.index');

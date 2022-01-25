@@ -34,6 +34,9 @@ class PelangganTransaksiController extends Controller
     public function get_checkout()
     {
         if(Session::has('user')){
+
+            $user = User::where('id', Auth::user()->id)->get();
+
             $trans = cart::with(['produk'])
             ->where('id_user', Auth::user()->id)
             ->paginate(5);
@@ -45,7 +48,7 @@ class PelangganTransaksiController extends Controller
             ->join('produks', 'produks.id', '=', 'carts.id_produk')
             ->sum(cart::raw('produks.harga * carts.jumlah'));
 
-            return view('Pelanggan.page.transaksi.checkout', compact('trans', 'tot', 'order'));
+            return view('Pelanggan.page.transaksi.checkout', compact('trans', 'tot', 'order', 'user'));
         }
         else{
             return redirect()->route('home.index');

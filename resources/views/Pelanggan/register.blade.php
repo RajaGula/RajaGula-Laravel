@@ -64,17 +64,6 @@
                     <textarea name="alamat" id="alamat" rows="3" class="form-control py-3" ></textarea>
                   </div>
   
-                  <div class="form-check d-flex mb-5">
-                    <input
-                      class="form-check-input me-2"
-                      type="checkbox"
-                      value=""
-                      id="form2Example3cg"
-                    />
-                    <label class="form-check-label" for="form2Example3g">
-                      I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
-                    </label>
-                  </div>
   
                   <div class="d-flex justify-content-center">
                     <button class="btn btn-outline-light" name="checkout" type="submit" style="background-color:#7F9B6E;font-color:white;width:100%;border-radius:25px 25px 25px 25px; font-size:18px"><b>Daftar</b></button>
