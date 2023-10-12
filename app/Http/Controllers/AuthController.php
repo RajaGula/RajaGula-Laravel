@@ -101,6 +101,8 @@ class AuthController extends Controller
             'email'         => $request -> email,
             'alamat'        => $request -> alamat,
             'telepon'       => $request -> telepon,
+            'role'          => "User",
+            'foto'          => "User",
         ]);
         
         $user = Auth::user();
