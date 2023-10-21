@@ -10,6 +10,7 @@ use App\Http\Requests\AdminLoginVerifyRequest;
 use App\Models\User;
 use App\Models\Admin;
 use Session;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
@@ -101,12 +102,52 @@ class AuthController extends Controller
             'email'         => $request -> email,
             'alamat'        => $request -> alamat,
             'telepon'       => $request -> telepon,
-            'role'          => "User",
+            'role'          => 'user',
             'foto'          => "User",
         ]);
         
         $user = Auth::user();
         $request->session()->put('user', $user);
         return redirect('/loginpelanggan')->with('success', 'Registrasi Berhasil');
+    }
+
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+  
+  
+    public function handleGoogleCallback(Request $request)
+    {
+        try {
+            $user_google    = Socialite::driver('google')->user();
+            $user           = User::where('email', $user_google->getEmail())->first();
+
+            if($user != null){
+                Auth::login($user);
+                $request->session()->put('user', $user);
+                return redirect()->route('home.index');
+            }else{
+                User::Create([
+                    'email'             => $user_google->getEmail(),
+                    'name'              => $user_google->getName(),
+                    'password'          => 0,
+                    'email_verified_at' => now(),
+                    'telepon'           => 0,
+                    'alamat'            => "-",
+                    'status'            => "Aktif"
+                ]);
+        
+                
+                $user = Auth::user();
+                $request->session()->put('user', $user);
+                return redirect(route('home.index'));
+            }
+
+        } catch (Exception $e) {
+            dd($e->getMessage());
+        }
+
+
     }
 }

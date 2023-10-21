@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\LoginController;
 
 use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\AdminPelangganController;
@@ -19,7 +18,7 @@ use App\Http\Controllers\PelangganReviewController;
 
 use App\Http\Controllers\PDFController;
 
-use App\Http\Controllers\AuthPelangganController;
+use App\Http\Controllers\AuthController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +33,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('auth/redirect', [AuthController::class, 'redirectToGoogle']);
+Route::get('auth/callback', [AuthController::class, 'handleGoogleCallback']);
 Route::get('login', 'App\Http\Controllers\AuthController@login')->name('login');
 Route::post('proses_login', 'App\Http\Controllers\AuthController@proses_login')->name('proses_login');
 
