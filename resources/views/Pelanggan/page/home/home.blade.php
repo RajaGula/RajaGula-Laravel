@@ -60,7 +60,8 @@
                 <img src="https://drive.google.com/uc?export=view&id=1tz3TASd2M3Jpu_m_t7G6dB7zFDPfMynr" alt="banner" width="100%">
             </div>
             <div class="row">
-                <div class="col-md pt-5">
+            <div class="col">
+            <div class="col-md pt-5">
                     <h5>Urutkan :</h5>
                     <form>
                         <div class="form-check" data-filter=".baru" id='baru'>
@@ -83,7 +84,23 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-md-9">
+                <div class="col-md pt-2">
+                    <h5>Filter by Category:</h5>
+                    <form method="GET">
+                        <select name="category" id="category" class="form-control" onchange="this.form.submit()">
+                            <option value="" style="color: black;">All Categories</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}" {{ $category->id == $selectedCategory ? 'selected' : '' }} style="color: black;">
+                                    {{ $category->kategori }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </form>
+                </div>
+            </div>
+
+                
+                <div class="col-md-7">
                     <div class="row " id="produkasli">
                     @foreach($produk as $pr)
                         <div class="col-md pt-5">
