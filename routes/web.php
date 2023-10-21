@@ -117,8 +117,10 @@ Route::prefix('/')->group(function () {
     Route::prefix('/favorit')->name('favorit.')->group(function () {
         Route::get('/', [PelangganFavoritController::class, 'index'])->name('index');
         Route::get('/create/{id}', [PelangganFavoritController::class, 'create'])->name('create');
-        Route::get('/delete/{id}', [PelangganFavoritController::class, 'delete'])->name('delete');
+        Route::get('/delete/{id}', [PelangganFavoritController::class, 'delete'])->name('delete');        
+        Route::get('/search', [PelangganFavoritController::class, 'search'])->name('search');
     });
+    
 
     Route::prefix('/cart')->name('cart.')->group(function () {
         Route::get('/', [PelangganCartController::class, 'index'])->name('index');

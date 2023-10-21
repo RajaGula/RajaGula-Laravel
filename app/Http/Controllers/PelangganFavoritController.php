@@ -39,7 +39,6 @@ class PelangganFavoritController extends Controller
             $favorit->save();
 
             return redirect(route('favorit.index'));
-
         }
         else{
             return redirect()->route('home.index')->with(['success' => 'Silahkan Login Terlebih Dahulu']);
@@ -55,4 +54,16 @@ class PelangganFavoritController extends Controller
         return redirect(route('favorit.index'))->with(['success' => 'Delete Favorit Berhasil']);
     }
 
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $favorit = Favorit::with(['produk'])
+            ->where('id_user', Auth::user()->id)
+            ->whereHas('produk', function ($queryBuilder) use ($query) {
+                $queryBuilder->where('nama_produk', 'like', '%' . $query . '%');
+            })
+            ->paginate(5);
+
+        return view('Pelanggan.page.favorit.favorit', compact('favorit'));
+    }
 }
